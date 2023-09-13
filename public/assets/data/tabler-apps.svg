@@ -1,0 +1,11 @@
+<svg id="tabler-apps" xmlns="http://www.w3.org/2000/svg" width="58.213" height="58.213" viewBox="0 0 58.213 58.213">
+  <path id="Path_62" data-name="Path 62" d="M0,0H58.213V58.213H0Z" fill="rgba(0,0,0,0)"/>
+  <rect id="Rectangle_50" data-name="Rectangle 50" width="17" height="17" rx="1" transform="translate(10 9)" fill="#d66b29"/>
+  <rect id="Rectangle_52" data-name="Rectangle 52" width="15" height="15" rx="1" transform="translate(34 34)" fill="rgba(0,0,0,0)" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_75" data-name="Line 75" x2="15" transform="translate(34 17)" fill="none" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_76" data-name="Line 76" y2="14" transform="translate(41 10)" fill="none" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <g id="Ellipse_322" data-name="Ellipse 322" transform="translate(9 33)" fill="#fff" stroke="#888" stroke-width="3">
+    <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
+    <circle cx="8.5" cy="8.5" r="7" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+{
+    "presets": ["next/babel"],
+    "env": {
+        "production": {
+            "plugins": ["transform-remove-console"]
+        }
+    },
+    "plugins": [
+        ["styled-components", { "ssr": true }],
+        ["@babel/plugin-proposal-class-properties"],
+        ["inline-react-svg"],
+        [
+            "import",
+            {
+                "libraryName": "antd",
+                "style": true
+            }
+        ],
+        [
+            "module-resolver",
+            {
+                "root": "./src",
+                "extensions": [".js"],
+                "alias": {
+                    "src": "./src",
+                    "@pages": "./pages",
+                    "@components": "./src/components",
+                    "@containers": "./src/containers",
+                    "@icons": "./src/icons",
+                    "@helpers": "./src/helpers",
+                    "@styles": "./src/theme",
+                    "@assets": "./public/assets",
+                    "@partials": "./src/partials",
+                    "@config": "./src/config",
+                    "@routes": "./src/routes"
+                },
+                "cwd": "packagejson"
+            }
+        ]
+    ]
+}

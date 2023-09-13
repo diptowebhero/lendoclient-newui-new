@@ -1,0 +1,7 @@
+<svg id="tabler-plant" xmlns="http://www.w3.org/2000/svg" width="86.242" height="86.242" viewBox="0 0 86.242 86.242">
+  <path id="Path_1603" data-name="Path 1603" d="M0,0H86.242V86.242H0Z" fill="rgba(0,0,0,0)"/>
+  <path id="Path_1604" data-name="Path 1604" d="M7,15H42.934V29.374a7.187,7.187,0,0,1-7.187,7.187H14.187A7.187,7.187,0,0,1,7,29.374Z" transform="translate(18.154 38.901)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_1605" data-name="Path 1605" d="M35.341,24.561A21.561,21.561,0,0,0,13.78,3H3v7.187A21.561,21.561,0,0,0,24.561,31.747h10.78" transform="translate(7.78 7.78)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_1089" data-name="Line 1089" y1="22" transform="translate(43.242 32)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_1606" data-name="Path 1606" d="M12,30.385C12,14.359,21.653,5,33.561,5h10.78V8.593A21.561,21.561,0,0,1,22.78,30.154H12" transform="translate(31.121 12.967)" fill="rgba(0,0,0,0)" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>

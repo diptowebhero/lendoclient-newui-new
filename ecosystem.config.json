@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "nft-marketpalce",
+      "script": "yarn run start",
+      "watch": false,
+      "autorestart": true,
+      "node_args": "--max-http-header-size=810000 --max_old_space_size=4096"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+version: "3.6"
+networks:
+    lendo:
+        external: true
+services:
+    lendo-nft-website:
+        container_name: lendo-nft-website
+        image: registry.gitlab.com/lendo-nft-marketplace/lendo-nft-website:demo
+        restart: always
+        ports:
+            - 3000:3000
+        environment:
+            POSTGRES_HOST: "postgres"
+            POSTGRES_PORT: "5432"
+
+        networks:
+            - lendo

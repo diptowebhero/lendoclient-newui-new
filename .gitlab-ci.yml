@@ -1,0 +1,52 @@
+stages:
+    - build
+    - release
+    - deploy
+
+variables:
+    TEST_IMAGE: $CI_REGISTRY/lendo-nft-marketplace/lendo-nft-website:$CI_COMMIT_REF_NAME
+    RELEASE_IMAGE: $CI_REGISTRY/lendo-nft-marketplace/lendo-nft-website:latest
+
+build-dockerfile-AEULCRAPP02D:
+    before_script:
+        - docker login registry.gitlab.com -u h.montazer -p $TOKEN
+    tags:
+        - build
+    image: tiangolo/docker-with-compose
+    stage: build
+    script:
+        - docker login registry.gitlab.com -u h.montazer -p $TOKEN
+        # - cat .env.sample
+        # - echo  SITE_URL=https://demo.lendochain.io >> .env.sample
+        # - echo  DEFAULT_CHAIN_ID=97 >> .env.sample
+        # - echo  FILE_SERVER= >> .env.sample
+        # - echo  APP_UUID_KEY=lenochain_marketplace >> .env.sample
+        # - echo  LOCALE_DIRECTION_KEY= >> .env.sample
+        # - echo  KEY_TOKEN= >> .env.sample
+        # - echo  KEY_WALLET_ACCOUNT=lendochain_connected_account >> .env.sample
+        # - echo  KEY_USER= >> .env.sample
+        # - echo  KEY_PWA_HINT= >> .env.sample
+        # - cp  .env.sample .env
+        # - cat .env.sample
+        # - cat .env
+        - docker build --pull -t $TEST_IMAGE .
+        - docker push $TEST_IMAGE
+    only:
+        - demo
+
+deploy-on-AEULCRAPP02D:
+    before_script:
+        - docker login registry.gitlab.com -u h.montazer -p $TOKEN
+    image: tiangolo/docker-with-compose
+    stage: deploy
+    tags:
+        - build
+    script:
+        - docker login registry.gitlab.com -u h.montazer -p $TOKEN
+        - docker rm -f lendo-nft-website || true
+        - sleep 5
+        - docker ps
+        - docker pull $TEST_IMAGE
+        - docker-compose -f demo.yaml up -d
+    only:
+        - demo

@@ -1,0 +1,15 @@
+<svg id="tabler-3d-cube-sphere" xmlns="http://www.w3.org/2000/svg" width="86.242" height="86.242" viewBox="0 0 86.242 86.242">
+  <path id="Path_5" data-name="Path 5" d="M0,0H86.242V86.242H0Z" fill="rgba(0,0,0,0)"/>
+  <path id="Path_6" data-name="Path 6" d="M11.187,26.936,4,22.984V14" transform="translate(10.374 36.308)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_7" data-name="Path 7" d="M4,19.336V10.353L11.187,6.4" transform="translate(10.374 16.598)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_8" data-name="Path 8" d="M10,6.953,17.187,3l7.187,3.953" transform="translate(25.934 7.78)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_9" data-name="Path 9" d="M18,6.4l7.187,3.953v8.984" transform="translate(46.682 16.598)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_10" data-name="Path 10" d="M25.187,14v8.984L18,27.008" transform="translate(46.682 36.308)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_11" data-name="Path 11" d="M24.374,19.9l-7.187,3.953L10,19.9" transform="translate(25.934 51.609)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_3" data-name="Line 3" y1="3.953" x2="7.187" transform="translate(43.121 39.168)" fill="none" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_4" data-name="Line 4" y1="3.953" x2="7.187" transform="translate(64.682 26.951)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_5" data-name="Line 5" y2="8.984" transform="translate(43.121 43.121)" fill="none" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_6" data-name="Line 6" y2="8.984" transform="translate(43.121 66.478)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_12" data-name="Path 12" d="M17.187,14.9,10,10.88" transform="translate(25.934 28.216)" fill="rgba(0,0,0,0)" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_7" data-name="Line 7" x1="7.187" y1="3.953" transform="translate(14.374 26.951)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>

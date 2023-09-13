@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@icons": ["src/icons/*"],
+      "@components/*": ["src/lists/*"],
+      "@partials/*": ["src/partials/*"],
+      "@containers/*": ["src/containers/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@helpers/api": ["src/helpers/api"],
+      "@styles": ["src/styles/*"],
+      "@routes": ["src/routes.js"],
+      "@config": ["src/config.js"]
+    }
+  }
+}

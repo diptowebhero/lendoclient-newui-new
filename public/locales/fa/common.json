@@ -1,0 +1,12 @@
+{
+  "h1": "سلام حال شما خوبه؟",
+  "girlsAndBoys": "سلام چطوری $t(girls, {\"count\": {{girls}} }) and $t(boys, {\"count\": {{boys}} })",
+  "test": "{{what}} چطوری {{how}}",
+  "change-locale": "Change locale",
+  "to-second-page": "salam",
+  "error-with-status": "A {{statusCode}} error occurred on server",
+  "error-without-status": "An error occurred on the server",
+  "title": "Home | next-i18next",
+  "i18next1": "سلام" ,
+  "Hello" : "Let’s build the future of digital economies together"
+}

@@ -1,0 +1,5 @@
+<svg id="tabler-wallet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path id="Path_7" data-name="Path 7" d="M0,0H24V24H0Z" fill="rgba(0,0,0,0)"/>
+  <path id="Path_8" data-name="Path 8" d="M17,8V5a1,1,0,0,0-1-1H6A2,2,0,0,0,6,8H18a1,1,0,0,1,1,1v3m0,4v3a1,1,0,0,1-1,1H6a2,2,0,0,1-2-2V6" fill="rgba(0,0,0,0)" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Path_9" data-name="Path 9" d="M20,12v4H16a2,2,0,0,1,0-4h4" fill="rgba(0,0,0,0)" stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>

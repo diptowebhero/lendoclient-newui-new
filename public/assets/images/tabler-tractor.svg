@@ -1,0 +1,9 @@
+<svg id="tabler-tractor" xmlns="http://www.w3.org/2000/svg" width="86.242" height="86.242" viewBox="0 0 86.242 86.242">
+  <path id="Path_2003" data-name="Path 2003" d="M0,0H86.242V86.242H0Z" fill="rgba(0,0,0,0)"/>
+  <line id="Line_1267" data-name="Line 1267" transform="translate(25 54)" fill="none" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <circle id="Ellipse_302" data-name="Ellipse 302" cx="7" cy="7" r="7" transform="translate(61 54)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <line id="Line_1268" data-name="Line 1268" x2="22.588" transform="translate(38.5 61.088)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_2004" data-name="Path 2004" d="M58.9,41.653V26.561a3.593,3.593,0,0,0-3.593-3.593H33.747L26.561,5H5V28.357" transform="translate(12.967 12.967)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Path_2005" data-name="Path 2005" d="M23.187,5H19.593A3.593,3.593,0,0,0,16,8.593V22.967" transform="translate(41.495 12.967)" fill="rgba(0,0,0,0)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <ellipse id="Ellipse_562" data-name="Ellipse 562" cx="14.5" cy="14" rx="14.5" ry="14" transform="translate(11 40)" fill="rgba(0,0,0,0)" stroke="#d66b29" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>

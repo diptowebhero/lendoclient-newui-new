@@ -1,0 +1,23 @@
+{
+  "name": "Lendochain NFT Marketplace",
+  "short_name": "Lendo NFT",
+  "description": "Lendochain NFT Marketplace",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#f4f4ef",
+  "background_color": "#e46400",
+  "icons": [
+    {
+      "src": "/assets/pwa/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/pwa/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

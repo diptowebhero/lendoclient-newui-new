@@ -1,0 +1,22 @@
+{
+  "explore": "explore",
+  "Stats": "Stats",
+  "Resources": "Resources",
+  "Create": "Create",
+  "hero.title": "A New Era Of \n NFT Marketplace",
+  "hero.slogan": "On The World’s First & Largest NFT Marketplace",
+  "learn": "Learn more about lendo",
+  "buy.now": "Buy Now",
+  "current.bid": "Current bid",
+  "ends.in": "Ends in",
+  "View all auctions": "View all auctions",
+  "Trending Auctions": "Trending Auctions",
+  "Top collections over": "Top collections over",
+  "View all top collections": "View all top collections",
+  "by": "By",
+  "total items": "Total {{total}} items",
+  "Stats1": "They have $t(girls, {\"count\": {{girls}} }) and $t(boys, {\"count\": {{boys}} })",
+  "Resources2": "{{what}} is {{how}}" ,
+  "Hello" : "Let’s build the future of digital economies together"
+
+}
