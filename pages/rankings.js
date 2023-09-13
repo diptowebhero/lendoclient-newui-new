@@ -1,29 +1,26 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Style from "@src/partials/rankings/style";
-import Mainlayout from "@src/components/layouts/mainLayout";
-import { Form, Select, Row, Col, Drawer } from "antd";
+import AvatarWithVerified from "@src/components/avatarWithVerify";
+import SortByRanking from "@src/components/forms/sortByRanking";
+import IncreaseDecreaseStatus from "@src/components/increaseDecreaseStatus";
+import HomeLayout from "@src/components/layouts/homeLayout";
+import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
 import Seo from "@src/components/seo";
 import Table from "@src/components/table";
-import Link from "next/link";
-import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
-import IncreaseDecreaseStatus from "@src/components/increaseDecreaseStatus";
-import AvatarWithVerified from "@src/components/avatarWithVerify";
-import textDots from "@src/helpers/textDots";
 import { categories } from "@src/data";
 import { getRequest } from "@src/helpers/api";
+import textDots from "@src/helpers/textDots";
 import { API_URL_COLLECTION } from "@src/partials/exploreCollections/const";
-import get from "lodash/get";
+import Style from "@src/partials/rankings/style";
 import { ROUTE_RANKINGS, ROUTE_SINGLE_COLLECTION } from "@src/routes";
-import { useRouter } from "next/router";
-import SortBy from "@src/components/forms/sortBy";
-import SortByRanking from "@src/components/forms/sortByRanking";
 import Sidebar from "@src/sidebar";
+import { Col, Drawer, Form, Row, Select } from "antd";
+import get from "lodash/get";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import HomeLayout from "@src/components/layouts/homeLayout";
 
 const { Option } = Select;
-
 
 export default function Rankings({ data }) {
   const router = useRouter();
@@ -32,14 +29,13 @@ export default function Rankings({ data }) {
   const offset = get(data, "metadata.offset", 1);
   const { query } = router;
   const [t, i18n] = useTranslation("common");
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
   const [visibleDrawer, setVisibleDrawer] = useState(false);
 
   const [form] = Form.useForm();
 
-
   function onFilter(changedFields, allFields) {
-    console.log({ changedFields, query, allFields })
+    console.log({ changedFields, query, allFields });
     router.replace({
       pathname: ROUTE_RANKINGS,
       query: { ...query, ...changedFields, ...allFields, offset: 1 },
@@ -63,13 +59,12 @@ export default function Rankings({ data }) {
     });
   }
 
-
   useEffect(() => {
-    const selectedSortBy = form.getFieldValue('time');
+    const selectedSortBy = form.getFieldValue("time");
     setSelectedValue(selectedSortBy);
   }, [form]);
 
-  const handleItemClick = (value) => {
+  const handleItemClick = value => {
     form.setFieldsValue({ time: value });
     setSelectedValue(value);
     onFilter(form.getFieldsValue());
@@ -78,7 +73,6 @@ export default function Rankings({ data }) {
   const onCloseFilterDrawer = () => {
     setVisibleDrawer(false);
   };
-
 
   const columns = [
     {
@@ -94,7 +88,8 @@ export default function Rankings({ data }) {
               avatarSize="medium"
               title={name}
               verified={verify}
-            /> &nbsp;
+            />{" "}
+            &nbsp;
             <span>{textDots(name, 30)}</span>
           </a>
         </Link>
@@ -175,11 +170,13 @@ export default function Rankings({ data }) {
   ];
 
   const timeData = [
-    { value: "LAST_1_DAYS", name: "24 h" },
-    { value: "LAST_7_DAYS", name: "7 d" },
-    { value: "LAST_30_DAYS", name: "30 d" },
+    { value: "LAST_1_HOUR", name: "1h" },
+    { value: "LAST_6_HOUR", name: "6h" },
+    { value: "LAST_1_DAYS", name: "24h" },
+    { value: "LAST_7_DAYS", name: "7d" },
+    { value: "LAST_30_DAYS", name: "30d" },
     { value: "ALL_TIME", name: "All Time" },
-  ]
+  ];
 
   return (
     <HomeLayout setVisibleDrawer={setVisibleDrawer}>
@@ -187,7 +184,7 @@ export default function Rankings({ data }) {
       <Style>
         {/* <div className="container"> */}
         <Row gutter={[16, 16]}>
-          <div style={{ width: '1.5%' }} />
+          <div style={{ width: "1.5%" }} />
           <Col xs={24} sm={24} md={24} lg={4}>
             <div className="main-sidebar-section">
               <Sidebar />
@@ -231,14 +228,17 @@ export default function Rankings({ data }) {
               >
                 <Form.Item name="sortBy" className="no-space">
                   <Col>
-                    <SortByRanking onFilter={onFilter} form={form} width={"150px"} className="no-space" />
+                    <SortByRanking
+                      onFilter={onFilter}
+                      form={form}
+                      width={"150px"}
+                      className="no-space"
+                    />
                   </Col>
                 </Form.Item>
               </Form>
 
-
               <div className="sorting">
-                <br /><br />
                 <Row wrap={true} justify="space-between" align="center">
                   <Col>
                     <div className="filter-section ">
@@ -258,19 +258,22 @@ export default function Rankings({ data }) {
                           <Col>
                             <Form.Item name="time" className="no-space">
                               <div class="bytime">
-                                {timeData.map((vl, index) =>
-                                  <div key={index + 1}
+                                {timeData.map((vl, index) => (
+                                  <div
+                                    key={index + 1}
                                     onClick={() => handleItemClick(vl.value)}
-                                    className={`sorttime ${selectedValue === vl.value ? 'active' : ''}`} >
+                                    className={`sorttime ${
+                                      selectedValue === vl.value ? "active" : ""
+                                    }`}
+                                  >
                                     {t(vl.name)}
                                   </div>
-                                )}
+                                ))}
                               </div>
                             </Form.Item>
                           </Col>
                           <Col>
-                            <div style={{ width: "470px" }}>
-                            </div>
+                            <div style={{ width: "470px" }}></div>
                           </Col>
                           <Col>
                             <Form.Item name="categoryName" className="no-space">
@@ -288,9 +291,13 @@ export default function Rankings({ data }) {
                             </Form.Item>
                           </Col>
                           &nbsp;&nbsp;
-                          <Col >
+                          <Col>
                             <Form.Item name="blockChain" className="no-space">
-                              <Select size="large" className="sortdropdowns" disabled>
+                              <Select
+                                size="large"
+                                className="sortdropdowns"
+                                disabled
+                              >
                                 <Option value="bsc">{t("BSC")}</Option>
                               </Select>
                             </Form.Item>
@@ -302,7 +309,6 @@ export default function Rankings({ data }) {
                 </Row>
                 <br /> <br />
               </div>
-
             </div>
             <div className="nft-items pb40">
               <Row>
@@ -322,7 +328,7 @@ export default function Rankings({ data }) {
                     expandable={{
                       expandedRowRender: record => {
                         return (
-                          <ul >
+                          <ul>
                             <li>
                               <span className="title">{`${t("24h%")}: `}</span>
                               <span className="value">
@@ -342,8 +348,12 @@ export default function Rankings({ data }) {
                               <span className="value">{record.floorprice}</span>
                             </li>
                             <li>
-                              <span className="title">{`${t("owners")}: `}</span>
-                              <span className="value">{record.countOwners}</span>
+                              <span className="title">{`${t(
+                                "owners"
+                              )}: `}</span>
+                              <span className="value">
+                                {record.countOwners}
+                              </span>
                             </li>
                             <li>
                               <span className="title">{`${t("items")}: `}</span>
@@ -376,7 +386,7 @@ export const getServerSideProps = async ({
   let collectionApiResponse = {};
   try {
     collectionApiResponse = await getRequest(API_URL_COLLECTION, query);
-  } catch (e) { }
+  } catch (e) {}
   return {
     props: {
       data: get(collectionApiResponse, "data", {}),
