@@ -1,25 +1,16 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import {
-  Tooltip,
-  Menu,
-  Dropdown,
-  message,
-  Button,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Col,
-  Collapse,
-} from "antd";
-import Style from "@partials/user/style";
-import Mainlayout from "@src/components/layouts/mainLayout";
-import Seo from "@src/components/seo";
-import HeaderProfile from "@src/components/headerProfile";
 import { SettingOutlined } from "@ant-design/icons";
-import { TbDots, TbShare, TbAlignLeft, TbSearch } from "react-icons/tb";
-import Link from "next/link";
+import Style from "@partials/user/style";
+import ActivityBy from "@src/components/forms/activity";
+import HeaderProfile from "@src/components/headerProfile";
+import Mainlayout from "@src/components/layouts/mainLayout";
+import ProfileSocial from "@src/components/profileSocial";
+import Seo from "@src/components/seo";
+import Table from "@src/components/table";
+import { SITE_URL } from "@src/config";
+import useActivityColumns from "@src/helpers/activityColumns";
+import { getRequest, redirectOnServer } from "@src/helpers/api";
+import copyTextToClipboard from "@src/helpers/copyToClipboard";
+import { API_URL_PROFILE } from "@src/partials/user/const";
 import {
   ROUTE_ACCOUNT_OTHERS,
   ROUTE_ACCOUNT_OTHERS_ACTIVITY,
@@ -30,17 +21,24 @@ import {
   ROUTE_ACCOUNT_OTHERS_MADE_OFFER,
   ROUTE_ACCOUNT_SETTING,
 } from "@src/routes";
-import { getRequest, redirectOnServer } from "@src/helpers/api";
-import { API_URL_PROFILE } from "@src/partials/user/const";
+import {
+  Button,
+  Col,
+  Collapse,
+  Drawer,
+  Form,
+  Menu,
+  Row,
+  Tooltip,
+  message,
+} from "antd";
 import get from "lodash/get";
-import { useState, Fragment } from "react";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import copyTextToClipboard from "@src/helpers/copyToClipboard";
-import { SITE_URL } from "@src/config";
-import ProfileSocial from "@src/components/profileSocial";
-import Table from "@src/components/table";
-import ActivityBy from "@src/components/forms/activity";
-import useActivityColumns from "@src/helpers/activityColumns";
+import { useState } from "react";
+import { TbAlignLeft, TbShare } from "react-icons/tb";
 const { Item } = Form;
 const { Panel } = Collapse;
 
@@ -259,10 +257,27 @@ export default function AccountOther(props) {
                       >
                         <Button
                           className="curve default"
+                          style={{
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                            alignItems: "center",
+                            gap: "7px",
+                            width: "117px",
+                            height: "45px",
+                            fontSize: "14px",
+                            padding: "0",
+                            justifyContent: "center",
+                            background: "#E46400",
+                            color: "#fff",
+                            border: "0",
+                            outline: "none",
+                          }}
                           size="large"
                           icon={<TbAlignLeft />}
                           onClick={() => filterDrawerToggle()}
-                        />
+                        >
+                          Filter
+                        </Button>
                       </Col>
                     </Row>
                   </div>

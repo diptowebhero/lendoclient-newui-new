@@ -1,4 +1,4 @@
-import { Form, Select, Checkbox } from "antd";
+import { Checkbox, Form } from "antd";
 import { useTranslation } from "next-i18next";
 const { Item } = Form;
 const { Group: CheckboxGroup } = Checkbox;
