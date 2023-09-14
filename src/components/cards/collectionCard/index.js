@@ -48,7 +48,7 @@ export default function CollectionCard({ data }) {
         <a className="collection-card">
           <div
             className="collection-card-wrapper"
-            style={{ background: "#1D2022", border: "0.5px solid #404242" }}
+            style={{ background: "#1D2022", border: "0.5px solid #1D2022" }}
           >
             <div className="top">
               <LazyLoadImage

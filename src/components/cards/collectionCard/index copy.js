@@ -1,11 +1,11 @@
-import Style from "./style";
-import Link from "next/link";
-import { useTranslation } from "next-i18next";
-import textDots from "@src/helpers/textDots";
-import { ROUTE_ACCOUNT_OTHERS, ROUTE_SINGLE_COLLECTION } from "@src/routes";
-import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
-import get from "lodash/get";
 import LazyLoadImage from "@src/components/lazyLoadImage";
+import textDots from "@src/helpers/textDots";
+import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
+import { ROUTE_ACCOUNT_OTHERS, ROUTE_SINGLE_COLLECTION } from "@src/routes";
+import get from "lodash/get";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import Style from "./style";
 
 export default function CollectionCard({ data }) {
   const [t, i18n] = useTranslation("common");
@@ -41,7 +41,10 @@ export default function CollectionCard({ data }) {
         href={ROUTE_SINGLE_COLLECTION.replace(":slug", slug)}
         prefetch={false}
       >
-        <a className="collection-card" style={{ background: "#1D2022", border: "0.5px solid #404242" }}>
+        <a
+          className="collection-card"
+          style={{ background: "#1D2022", border: "0.5px solid #1D2022" }}
+        >
           <div className="collection-card-wrapper">
             <div className="top">
               <LazyLoadImage
