@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import {
   TbBrandDiscord,
-  TbBrandTwitter,
-  TbWorld,
-  TbChartLine,
   TbBrandInstagram,
+  TbBrandTwitter,
+  TbChartLine,
+  TbWorld,
 } from "react-icons/tb";
 
 export default function ProfileSocial({ links = {} }) {

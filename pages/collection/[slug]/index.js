@@ -1,41 +1,40 @@
-import Mainlayout from "@src/components/layouts/mainLayout";
-import { Fragment, useEffect, useState } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Seo from "@src/components/seo";
-import { useRouter } from "next/router";
-import HeaderProfile from "@src/components/headerProfile";
-import Style from "@src/partials/collection/collectionId/style";
-import { useTranslation } from "next-i18next";
-import NftList from "@src/components/lists/nftList";
-import CollectionHeaderComponent from "@src/partials/collection/collectionId/collectionHeaderComponent";
-import {
-  Row,
-  Col,
-  Form,
-  Input,
-  Select,
-  Drawer,
-  Checkbox,
-  Collapse,
-  Radio,
-  Button,
-  Menu,
-} from "antd";
-import Link from "next/link";
-import { TbEdit, TbAlignLeft, TbSearch } from "react-icons/tb";
-import { API_URL_COLLECTION } from "@src/partials/exploreCollections/const";
-import { getRequest, redirectOnServer } from "@src/helpers/api";
-import get from "lodash/get";
-import StatusBy from "@src/components/forms/status";
+import Pagination from "@src/components/antd/pagination";
 import PriceBy from "@src/components/forms/price";
 import SortBy from "@src/components/forms/sortBy";
+import StatusBy from "@src/components/forms/status";
+import HeaderProfile from "@src/components/headerProfile";
+import Mainlayout from "@src/components/layouts/mainLayout";
+import NftList from "@src/components/lists/nftList";
+import Seo from "@src/components/seo";
+import { getRequest, redirectOnServer } from "@src/helpers/api";
+import message from "@src/helpers/message";
+import CollectionHeaderComponent from "@src/partials/collection/collectionId/collectionHeaderComponent";
+import Style from "@src/partials/collection/collectionId/style";
+import { API_URL_COLLECTION } from "@src/partials/exploreCollections/const";
 import {
   ROUTE_SINGLE_COLLECTION,
   ROUTE_SINGLE_COLLECTION_ACTIVITY,
 } from "@src/routes";
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Drawer,
+  Form,
+  Input,
+  Radio,
+  Row,
+  Select,
+} from "antd";
+import get from "lodash/get";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import qs from "qs";
-import Pagination from "@src/components/antd/pagination";
-import message from "@src/helpers/message";
+import { useEffect, useState } from "react";
+import { TbAlignLeft, TbSearch } from "react-icons/tb";
 
 const { Item } = Form;
 const { Option } = Select;
@@ -51,7 +50,6 @@ export default function CollectionId({ data }) {
   const { query } = router;
   const [form] = Form.useForm();
   const [visibleDrawer, setVisibleDrawer] = useState(true);
-
 
   const openKeys = Array.apply(null, { length: 200 }).map((value, index) =>
     (index + 1).toString()
@@ -108,7 +106,6 @@ export default function CollectionId({ data }) {
     }, 1000);
   }, []);
 
-
   function getPropsQuery() {
     const getOnlyPropsDash = Object.fromEntries(
       Object.entries(query).filter(([key]) => key.startsWith("props["))
@@ -145,7 +142,7 @@ export default function CollectionId({ data }) {
     });
     return finalObject;
   }
-  
+
   function getStatusQuery() {
     const getOnlyPropsDash = Object.fromEntries(
       Object.entries(query).filter(([key]) => key.startsWith("status"))
@@ -433,7 +430,7 @@ export default function CollectionId({ data }) {
                       <Item className="sorting" name="input">
                         <Input
                           prefix={<TbSearch />}
-                          placeholder={t("Search by name")}
+                          placeholder={t("Search by names")}
                           size="large"
                           allowClear
                           className="search-input"
@@ -448,7 +445,19 @@ export default function CollectionId({ data }) {
                     lg={{ order: 3 }}
                     xl={{ order: 3 }}
                     flex="250px"
+                    style={{
+                      position: "relative",
+                    }}
                   >
+                    <TbSearch
+                      style={{
+                        position: "absolute",
+                        color: "#fff",
+                        top: "17px",
+                        zIndex: "1",
+                        left: "16px",
+                      }}
+                    />
                     <SortBy width="100%" />
                   </Col>
                 </Row>
@@ -462,7 +471,7 @@ export default function CollectionId({ data }) {
               current={offset}
               total={total}
             />
-            
+
             <Drawer
               title=""
               className="filter-drawer first-hide"

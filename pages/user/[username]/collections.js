@@ -355,7 +355,19 @@ export default function AccountOther(props) {
                         lg={{ order: 3 }}
                         xl={{ order: 3 }}
                         flex="250px"
+                        style={{
+                          position: "relative",
+                        }}
                       >
+                        <TbSearch
+                          style={{
+                            position: "absolute",
+                            color: "#fff",
+                            top: "17px",
+                            zIndex: "1",
+                            left: "16px",
+                          }}
+                        />
                         <SortBy width="100%" />
                       </Col>
                     </Row>

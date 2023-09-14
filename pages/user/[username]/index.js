@@ -1,30 +1,20 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import {
-  Tooltip,
-  Menu,
-  Dropdown,
-  Button,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Col,
-  Collapse,
-} from "antd";
-import Style from "@partials/user/style";
-import Mainlayout from "@src/components/layouts/mainLayout";
-import Seo from "@src/components/seo";
-import HeaderProfile from "@src/components/headerProfile";
 import { SettingOutlined } from "@ant-design/icons";
-import {
-  TbDots,
-  TbShare,
-  TbAlignLeft,
-  TbSearch,
-  TbAlignRight,
-} from "react-icons/tb";
-import Link from "next/link";
+import { fetchWalletNFTs } from "@helpers/walletConnect/chains";
+import Style from "@partials/user/style";
+import Pagination from "@src/components/antd/pagination";
+import PriceBy from "@src/components/forms/price";
+import SortBy from "@src/components/forms/sortBy";
+import StatusBy from "@src/components/forms/status";
+import HeaderProfile from "@src/components/headerProfile";
+import Mainlayout from "@src/components/layouts/mainLayout";
+import NftList from "@src/components/lists/nftList";
+import ProfileSocial from "@src/components/profileSocial";
+import Seo from "@src/components/seo";
+import { SITE_URL } from "@src/config";
+import { getRequest, postRequest, redirectOnServer } from "@src/helpers/api";
+import copyTextToClipboard from "@src/helpers/copyToClipboard";
+import message from "@src/helpers/message";
+import { API_URL_PROFILE, API_URL_WALLET_NFTS } from "@src/partials/user/const";
 import {
   ROUTE_ACCOUNT_OTHERS,
   ROUTE_ACCOUNT_OTHERS_ACTIVITY,
@@ -36,27 +26,23 @@ import {
   ROUTE_ACCOUNT_SETTING,
 } from "@src/routes";
 import {
-  getRequest,
-  postRequest,
-  deleteWalletRequest,
-  getWalletRequest,
-  redirectOnServer,
-} from "@src/helpers/api";
-import { API_URL_PROFILE, API_URL_WALLET_NFTS } from "@src/partials/user/const";
+  Button,
+  Col,
+  Collapse,
+  Drawer,
+  Form,
+  Input,
+  Menu,
+  Row,
+  Tooltip,
+} from "antd";
 import get from "lodash/get";
-import ProfileNftList from "@src/components/lists/profileNftList";
-import StatusBy from "@src/components/forms/status";
-import PriceBy from "@src/components/forms/price";
-import SortBy from "@src/components/forms/sortBy";
-import Pagination from "@src/components/antd/pagination";
-import { useState, Fragment, useEffect } from "react";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import copyTextToClipboard from "@src/helpers/copyToClipboard";
-import { SITE_URL } from "@src/config";
-import ProfileSocial from "@src/components/profileSocial";
-import message from "@src/helpers/message";
-import NftList from "@src/components/lists/nftList";
-import { fetchWalletNFTs } from "@helpers/walletConnect/chains";
+import { useEffect, useState } from "react";
+import { TbAlignRight, TbSearch, TbShare } from "react-icons/tb";
 
 const { Item } = Form;
 const { Panel } = Collapse;
@@ -445,7 +431,9 @@ export default function AccountOther(props) {
                         lg={{ order: 3 }}
                         xl={{ order: 3 }}
                         flex="250px"
-                        style={{ position: "relative" }}
+                        style={{
+                          position: "relative",
+                        }}
                       >
                         <TbSearch
                           style={{
@@ -453,7 +441,7 @@ export default function AccountOther(props) {
                             color: "#fff",
                             top: "17px",
                             zIndex: "1",
-                            left:"16px"
+                            left: "16px",
                           }}
                         />
                         <SortBy width="100%" />

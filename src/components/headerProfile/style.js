@@ -39,7 +39,7 @@ export const Style = styled.div`
   .socials-box {
     position: absolute;
     top: -50px;
-    right: 20px;
+    right: 33px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -96,6 +96,8 @@ export const Style = styled.div`
       ul {
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
         grid-gap: 10px;
         li {
           position: relative;
@@ -105,7 +107,7 @@ export const Style = styled.div`
           .ant-typography {
             margin: 0;
           }
-          &:after {
+          /* &:after {
             content: "";
             position: absolute;
             height: 10px;
@@ -114,7 +116,7 @@ export const Style = styled.div`
             top: 50%;
             transform: translateY(-50%);
             left: 0;
-          }
+          } */
           &:first-child {
             &:after {
               display: none;

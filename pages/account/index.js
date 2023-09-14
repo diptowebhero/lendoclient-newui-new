@@ -1,24 +1,13 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import {
-  Tooltip,
-  Menu,
-  Dropdown,
-  Button,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Col,
-  Collapse,
-} from "antd";
+import { SettingOutlined } from "@ant-design/icons";
 import Style from "@partials/user/style";
+import Pagination from "@src/components/antd/pagination";
+import PriceBy from "@src/components/forms/price";
+import StatusBy from "@src/components/forms/status";
+import HeaderProfile from "@src/components/headerProfile";
 import Mainlayout from "@src/components/layouts/mainLayout";
 import Seo from "@src/components/seo";
-import HeaderProfile from "@src/components/headerProfile";
-import { SettingOutlined } from "@ant-design/icons";
-import { TbDots, TbShare, TbAlignLeft, TbSearch } from "react-icons/tb";
-import Link from "next/link";
+import { getRequest, postRequest, redirectOnServer } from "@src/helpers/api";
+import { API_URL_PROFILE, API_URL_WALLET_NFTS } from "@src/partials/user/const";
 import {
   ROUTE_ACCOUNT,
   ROUTE_ACCOUNT_ACTIVITY,
@@ -30,32 +19,33 @@ import {
   ROUTE_ACCOUNT_OTHERS,
   ROUTE_ACCOUNT_SETTING,
 } from "@src/routes";
-import { getRequest, postRequest, deleteWalletRequest, getWalletRequest, redirectOnServer } from "@src/helpers/api";
 import {
-  API_URL_EXTERNAL_SYNC,
-  API_URL_PROFILE,
-  API_URL_WALLET_NFTS,
-} from "@src/partials/user/const";
+  Button,
+  Col,
+  Collapse,
+  Drawer,
+  Form,
+  Input,
+  Menu,
+  Row,
+  Tooltip,
+} from "antd";
 import get from "lodash/get";
-import ProfileNftList from "@src/components/lists/profileNftList";
-import StatusBy from "@src/components/forms/status";
-import PriceBy from "@src/components/forms/price";
-import Pagination from "@src/components/antd/pagination";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
+import { TbAlignLeft, TbSearch, TbShare } from "react-icons/tb";
 
-import { useState, Fragment, useEffect } from "react";
-import { useRouter } from "next/router";
-import copyTextToClipboard from "@src/helpers/copyToClipboard";
-import { SITE_URL } from "@src/config";
-import ProfileSocial from "@src/components/profileSocial";
-import message from "@src/helpers/message";
-import qs from "qs";
 import SortBy from "@src/components/forms/sortBy";
 import NftList from "@src/components/lists/nftList";
+import ProfileSocial from "@src/components/profileSocial";
+import { SITE_URL } from "@src/config";
+import copyTextToClipboard from "@src/helpers/copyToClipboard";
+import message from "@src/helpers/message";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-
-import {
-  fetchWalletNFTs
-} from "@helpers/walletConnect/chains";
+import { fetchWalletNFTs } from "@helpers/walletConnect/chains";
 
 const { Item } = Form;
 const { Panel } = Collapse;
@@ -81,9 +71,9 @@ export default function AccountOther(props) {
   const offset = get(collectedData, "metadata.offset", 1);
   const collectedItems = get(collectedData, "data.collected", []);
 
-  const [nftDocs, setnftDocs] = useState([])
-  const [Data, setData] = useState([])
-  const [totalData, settotalData] = useState([])
+  const [nftDocs, setnftDocs] = useState([]);
+  const [Data, setData] = useState([]);
+  const [totalData, settotalData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [countPage, setcountPage] = useState(1);
 
@@ -93,46 +83,49 @@ export default function AccountOther(props) {
 
   // // collectedItems.push(...nftDocs)
 
-
-
-  console.log({ Data })
+  console.log({ Data });
 
   useEffect(() => {
     let data = {
       creator_id: profileData.user.id,
-      db_nft: ""
-    }
+      db_nft: "",
+    };
     const lestingRec = async () => {
       // await new Promise((resolve) => setTimeout(resolve, 8000));
-      const res = await postRequest(`${API_URL_WALLET_NFTS}/onlylist?page=${countPage}`, data)
-      const vl = res.data
+      const res = await postRequest(
+        `${API_URL_WALLET_NFTS}/onlylist?page=${countPage}`,
+        data
+      );
+      const vl = res.data;
       // console.log("{res} =>", vl.items)
-      setData(vl.items)
-      settotalData(vl.totalItems)
-      setCurrentPage(vl.currentPage)
-    }
-    lestingRec()
+      setData(vl.items);
+      settotalData(vl.totalItems);
+      setCurrentPage(vl.currentPage);
+    };
+    lestingRec();
   }, [countPage]);
-
 
   useEffect(() => {
     const fetchData = async () => {
-      let collectionId = collectionData?.data?.collections[0]?.id
+      let collectionId = collectionData?.data?.collections[0]?.id;
 
       if (publicAddress) {
         try {
           let data = {
             creator_id: profileData.user.id,
-            db_nft: ""
-          }
-          await postRequest(`${API_URL_WALLET_NFTS}/delete`, data)
+            db_nft: "",
+          };
+          await postRequest(`${API_URL_WALLET_NFTS}/delete`, data);
 
-          data.db_nft = "no"
+          data.db_nft = "no";
           const Docs = await fetchWalletNFTs(publicAddress);
-          const checkformet = await postRequest(`${API_URL_WALLET_NFTS}/list`, data)
-          const totalLength = checkformet.data.length + Docs?.length
+          const checkformet = await postRequest(
+            `${API_URL_WALLET_NFTS}/list`,
+            data
+          );
+          const totalLength = checkformet.data.length + Docs?.length;
           // console.log({totalLength})
-          setformetPageLength(totalLength)
+          setformetPageLength(totalLength);
           if (Docs?.length > 0) {
             for (const vl of Docs) {
               let obj = {
@@ -144,9 +137,7 @@ export default function AccountOther(props) {
                 block_chain: vl?.price.asset,
                 metadata: vl?.metadata,
                 creator_id: profileData.user.id,
-                owner_ids: [
-                  publicAddress
-                ],
+                owner_ids: [publicAddress],
                 token_id: vl?.tokenId,
                 collection_id: collectionId ? collectionId : 128,
                 slug: vl?.tokenId,
@@ -156,12 +147,11 @@ export default function AccountOther(props) {
                 quantity: 0,
                 is_verified: false,
                 is_mint: false,
-                db_nft: "yes"
-              }
-              await postRequest(`${API_URL_WALLET_NFTS}/insert`, obj)
+                db_nft: "yes",
+              };
+              await postRequest(`${API_URL_WALLET_NFTS}/insert`, obj);
             }
           }
-
         } catch (error) {
           // Handle any errors that might occur during fetching
           console.error("Error fetching NFTs:", error);
@@ -171,8 +161,6 @@ export default function AccountOther(props) {
 
     fetchData();
   }, [publicAddress]);
-
-
 
   function onEnter(values) {
     router.replace({
@@ -215,11 +203,10 @@ export default function AccountOther(props) {
     }
   }
 
-
   function onChangePagination(page) {
-    console.log("on page change ")
+    console.log("on page change ");
     setCurrentPage(page);
-    setcountPage(page)
+    setcountPage(page);
     // router.replace({
     //   pathname: ROUTE_ACCOUNT,
     //   query: { ...query, offset: page },
@@ -232,7 +219,6 @@ export default function AccountOther(props) {
   const onCloseFilterDrawer = () => {
     setVisibleDrawer(false);
   };
-
 
   const moreMenu = (
     <Menu
@@ -405,7 +391,19 @@ export default function AccountOther(props) {
                         lg={{ order: 3 }}
                         xl={{ order: 3 }}
                         flex="250px"
+                        style={{
+                          position: "relative",
+                        }}
                       >
+                        <TbSearch
+                          style={{
+                            position: "absolute",
+                            color: "#fff",
+                            top: "17px",
+                            zIndex: "1",
+                            left: "16px",
+                          }}
+                        />
                         <SortBy width="100%" />
                       </Col>
                     </Row>
@@ -413,7 +411,9 @@ export default function AccountOther(props) {
                 </div>
                 <div className="list pt40 pb40">
                   {/* <NftList data={collectedItems} userAdd={publicAddress} /> */}
-                  {Data?.length > 0 && <NftList data={Data} userAdd={publicAddress} />}
+                  {Data?.length > 0 && (
+                    <NftList data={Data} userAdd={publicAddress} />
+                  )}
                 </div>
                 <Pagination
                   onChange={onChangePagination}
@@ -421,7 +421,7 @@ export default function AccountOther(props) {
                   total={parseInt(formetPageLength || totalData)}
                 />
 
-                <div  className="drawer-wrapping-context">
+                <div className="drawer-wrapping-context">
                   <Drawer
                     title=""
                     className="filter-drawer"
@@ -436,8 +436,8 @@ export default function AccountOther(props) {
                         expandIconPosition="end"
                         bordered
                       >
-                        <Panel  header={t("status")} key="1">
-                          <StatusBy  />
+                        <Panel header={t("status")} key="1">
+                          <StatusBy />
                         </Panel>
                         <Panel header={t("price")} key="2">
                           <PriceBy />
@@ -457,7 +457,6 @@ export default function AccountOther(props) {
                   </Drawer>
                 </div>
 
-
                 <Form.Item hidden>
                   <Button type="primary" htmlType="submit">
                     Submit
@@ -472,17 +471,28 @@ export default function AccountOther(props) {
   );
 }
 
-
 export const getServerSideProps = async ctx => {
   const { res, req, params, locale, query } = ctx;
   let profileApiResponse = {};
   let profileItemsApiResponse = {};
   let profileCollectionApiResponse = {};
   try {
-    [profileApiResponse, profileItemsApiResponse, profileCollectionApiResponse] = await Promise.all([
+    [
+      profileApiResponse,
+      profileItemsApiResponse,
+      profileCollectionApiResponse,
+    ] = await Promise.all([
       (profileApiResponse = await getRequest(API_URL_PROFILE, query, ctx)),
-      (profileItemsApiResponse = await getRequest(`${API_URL_PROFILE}/collected`, query, ctx)),
-      (profileCollectionApiResponse = await getRequest(`${API_URL_PROFILE}/collections`, query, ctx)),
+      (profileItemsApiResponse = await getRequest(
+        `${API_URL_PROFILE}/collected`,
+        query,
+        ctx
+      )),
+      (profileCollectionApiResponse = await getRequest(
+        `${API_URL_PROFILE}/collections`,
+        query,
+        ctx
+      )),
     ]);
   } catch (e) {
     return redirectOnServer(e);
@@ -498,6 +508,3 @@ export const getServerSideProps = async ctx => {
     },
   };
 };
-
-
-

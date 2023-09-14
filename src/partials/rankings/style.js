@@ -31,9 +31,9 @@ export const Style = styled.div`
     font-weight: 400;
     line-height: 24px;
   }
-  .ranking-flex-space{
-    display:flex;
-    justify-content:space-between;;
+  .ranking-flex-space {
+    display: flex;
+    justify-content: space-between;
   }
   .sorting {
     border-top: 1px solid white;
@@ -180,10 +180,10 @@ export const Style = styled.div`
     color: white;
   }
   @media (max-width: 768px) {
-    .ranking-flex-space{
+    .ranking-flex-space {
       flex-direction: column;
     }
-   }
+  }
   .main-sidebar-section {
     display: block;
     ${mediaQuery.lg`
