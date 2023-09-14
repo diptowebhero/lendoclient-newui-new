@@ -223,7 +223,7 @@ export default function Footer(props) {
                       <Col xs={12} sm={12} md={6} lg={4} xl={4}>
                         <div
                           className="footer-menu"
-                          style={{ marginTop: "45px;" }}
+                          style={{ marginTop: "45px" }}
                         >
                           <ul>
                             <li>
