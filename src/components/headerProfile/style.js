@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import mediaQuery from "@src/styles/MediaQuery";
+import styled from "styled-components";
 
 export const Style = styled.div`
   .hero-section {
@@ -23,7 +23,7 @@ export const Style = styled.div`
         transform: translateX(-50%);
         bottom: -80px;
         border-radius: 50%;
-        border: 2px solid #D66B29 !important;
+        border: 2px solid #d66b29 !important;
         width: 155px;
         height: 155px;
         overflow: hidden;
@@ -82,7 +82,12 @@ export const Style = styled.div`
       align-items: center;
       grid-gap: 5px;
       h1 {
-        color:white;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.5rem; /* 96% */
         margin: 0;
       }
     }
@@ -116,7 +121,7 @@ export const Style = styled.div`
             }
           }
           &.wallet-address {
-            color:white;
+            color: white;
           }
           &.joined-time {
             color: ${props => props.theme.colors.gray};
@@ -135,4 +140,3 @@ export const Style = styled.div`
   }
 `;
 export default Style;
-
