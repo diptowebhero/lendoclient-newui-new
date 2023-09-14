@@ -24,6 +24,17 @@ export const Style = styled.div`
       letter-spacing: 0.15px;
     }
   }
+  .ant-select-selection-placeholder {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .ranking-flex-space{
+    display:flex;
+    justify-content:space-between;;
+  }
   .sorting {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
@@ -168,6 +179,11 @@ export const Style = styled.div`
     border-radius: 50px;
     color: white;
   }
+  @media (max-width: 768px) {
+    .ranking-flex-space{
+      flex-direction: column;
+    }
+   }
   .main-sidebar-section {
     display: block;
     ${mediaQuery.lg`
