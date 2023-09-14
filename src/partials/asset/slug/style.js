@@ -1,13 +1,12 @@
-import mediaQuery from "@src/styles/MediaQuery";
 import styled from "styled-components";
 
 export const Style = styled.div`
-  .nft-detail-hr{
-    opacity:0.5;
-    color:#ACACAC;
+  .nft-detail-hr {
+    opacity: 0.5;
+    color: #acacac;
   }
-  .lazy-load-image-loaded{
-    img{
+  .lazy-load-image-loaded {
+    img {
       border-radius: 10px;
     }
   }
@@ -18,16 +17,15 @@ export const Style = styled.div`
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-    li {
-
+      li {
+      }
     }
   }
+  .about-collection {
+    color: #acacac;
+    padding: 4%;
   }
-  .about-collection{
-     color:#ACACAC;
-     padding: 4%;
-  }
-  .make-offer-btn{
+  .make-offer-btn {
     width: 100%;
     justify-content: center;
     text-align: center;
@@ -37,27 +35,31 @@ export const Style = styled.div`
     height: auto;
     // border: 1px solid #c1c1c1;
     // background: #fff;
-    border-radius: 10px
-    img {
+    border-radius: 10px img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 10px
+      border-radius: 10px;
     }
   }
   .line {
     border-bottom: 1px solid #e6e6e6;
   }
   .item-description {
-    background-color: #1A1C1E;
+    background-color: #1a1c1e;
     padding: 25px 20px;
     h5 {
       color: white;
       font-weight: 700;
       font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      column-gap: 11.96px;
+      line-height: 0;
+      margin-bottom: 20px;
     }
     p {
-      color: #ACACAC;
+      color: #acacac;
       font-size: 14px;
     }
   }
@@ -74,10 +76,13 @@ export const Style = styled.div`
   .properties {
     ul {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+      min-height: 74px;
+      padding: 0px 10px;
+      grid-gap: 4px;
+
       li {
-        background: #D66B29;
+        background: #d66b29;
         border: 1px solid ${props => props.theme.colors.primary};
         border-radius: ${props => props.theme.borderRadius.defaultBorderRadius};
         padding: 10px;
@@ -86,19 +91,23 @@ export const Style = styled.div`
           &.property-title {
             // color: ${props => props.theme.colors.primary};
             color: white;
-            font-weight: 100;
-            font-size: 0.8rem;
+            font-weight: 400;
+            font-size: 0.625rem;
           }
           &.property-value {
+            color: #fff;
+            font-size: 1.25rem;
+            font-style: normal;
             font-weight: 700;
-            color: white;
+            line-height: normal;
+            margin: 6px 0px;
           }
           &.property-desc {
-            font-size: 0.7rem;
-            color:black;
+            font-size: 0.625rem;
+            color: #e46400;
             background: white;
-            border-radius:10px;
-
+            border-radius: 10px;
+            padding: 0px 2px;
           }
         }
       }
@@ -109,7 +118,7 @@ export const Style = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
-      color:#ACACAC;
+      color: #acacac;
       padding: 10px 20px;
       li {
         display: flex;
@@ -127,12 +136,13 @@ export const Style = styled.div`
     }
   }
   .collection-name {
+    padding-top: 11px;
     .title {
       font-size: 1rem;
       margin-top: 10px;
       font-weight: 700;
       font-size: 20px;
-      line-height: 24px
+      line-height: 24px;
     }
   }
   .item-title {
@@ -141,7 +151,7 @@ export const Style = styled.div`
       font-weight: 700;
       font-size: 35px;
       line-height: 42px;
-      color: #FFFFFF;
+      color: #ffffff;
       margin-bottom: 10px;
     }
   }
@@ -152,7 +162,7 @@ export const Style = styled.div`
       gap: 20px;
       margin-top: 30px;
       li {
-        font-size: 1rem;
+        font-size: 0.875rem;
         color: ${props => props.theme.colors.gray};
         font-weight: 100;
         display: flex;
@@ -162,16 +172,14 @@ export const Style = styled.div`
         &.favorite-box {
           cursor: pointer;
           .anticon {
-          font-size: 1.3rem;
-          &.favorited {
-            svg {
+            font-size: 0.875rem;
+            &.favorited {
+              svg {
                 fill: red;
+              }
             }
           }
         }
-        }
-       
-        .
       }
     }
   }
@@ -204,19 +212,19 @@ export const Style = styled.div`
           gap: 10px;
           align-items: center;
           .quanity {
-            background: rgba(0,0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.4);
             color: #fff;
             padding: 5px 10px;
             border-radius: 10px;
           }
           .network-value {
             font-size: 2rem;
-            color: #FFFFFF;
+            color: #ffffff;
             font-weight: 700;
           }
           .usd-value {
             font-size: 20px;
-            line-height: 24px; 
+            line-height: 24px;
             font-weight: 700;
           }
           .info {
@@ -250,29 +258,30 @@ export const Style = styled.div`
     > .ant-collapse-item
     > .ant-collapse-header
     .ant-collapse-arrow {
-    right: 0;
+    right: 12px;
   }
   .ant-collapse-header-text {
-    font-size: 1.2rem;
-    font-weight: 500;
+    color: #fff;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     text-transform: capitalize;
   }
   .ant-collapse-content > .ant-collapse-content-box {
     padding: 50px 0;
   }
-  
-  .ant-collapse-item{
-    background:#1A1C1E;
-    borderRadius:10px;
-    margin-bottom:2%;
-    .ant-collapse-header{
-      color:white ;
-      padding: 0 1px 0 10px
 
+  .ant-collapse-item {
+    border-radius: 0.625rem !important;
+    background: #1a1c1e;
+    margin-bottom: 2%;
+    padding: 24px;
+    .ant-collapse-header {
+      color: white;
+      padding: 0 1px 0 10px;
     }
   }
-  
-
 `;
 
 export default Style;

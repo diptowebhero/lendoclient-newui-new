@@ -1,38 +1,40 @@
 import Mainlayout from "@src/components/layouts/mainLayout";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Seo from "@src/components/seo";
-import { useRouter } from "next/router";
 import Style from "@src/partials/asset/slug/style";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 import {
-  Row,
-  Col,
-  Collapse,
-  Button,
-  Spin,
-  Popconfirm,
-  Modal,
-  Tooltip,
-  Form,
-  InputNumber,
-  Empty,
-  Avatar,
-  List,
-} from "antd";
-import Icon, {
+  AppstoreOutlined,
   EyeOutlined,
   HeartFilled,
   HeartOutlined,
   TagOutlined,
-  QuestionCircleOutlined,
-  AppstoreOutlined,
 } from "@ant-design/icons";
-import { TbClick, TbTag, TbInfoCircle } from "react-icons/tb";
-import { hooks } from "@src/components/wallet/connectors/metamask";
 import detectEthereumProvider from "@metamask/detect-provider";
-import Link from "next/link";
+import AvatarWithVerified from "@src/components/avatarWithVerify";
+import HeaderWithLink from "@src/components/headerWithLink";
 import LazyLoadImage from "@src/components/lazyLoadImage";
+import ProfileNftList from "@src/components/lists/profileNftList";
+import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
+import Table from "@src/components/table";
+import UserIdWithAvatar from "@src/components/userIdWithAvatar";
+import useActivityColumns from "@src/helpers/activityColumns";
+import {
+  getRequest,
+  patchRequest,
+  postRequest,
+  redirectOnServer,
+} from "@src/helpers/api";
+import { getUser, isAuth } from "@src/helpers/authUtils";
+import getCurrentNetwork from "@src/helpers/getCurrentNetwork";
+import blockExplorerLink from "@src/helpers/getters/blockExplorerLink";
+import { usdPriceDollor } from "@src/helpers/getters/price";
+import message from "@src/helpers/message";
+import textDots from "@src/helpers/textDots";
+import time, { shortTime, timeWithHour } from "@src/helpers/time";
+import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
 import {
   API_URL_CANCEL_LISTING,
   API_URL_CHECKOUT_STEP1,
@@ -42,45 +44,35 @@ import {
   API_URL_POST_OFFER_STEP2,
 } from "@src/partials/asset/slug/const";
 import {
-  getRequest,
-  patchRequest,
-  postRequest,
-  redirectOnServer,
-} from "@src/helpers/api";
-import { get, isEmpty } from "lodash";
-import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
-import {
   ROUTE_ACCOUNT_OTHERS,
-  ROUTE_HOME,
   ROUTE_LIST_ASSET,
   ROUTE_SINGLE_ASSET,
   ROUTE_SINGLE_COLLECTION,
 } from "@src/routes";
-import Table from "@src/components/table";
-import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
+import { theme } from "@src/styles/theme";
+import {
+  Button,
+  Col,
+  Collapse,
+  Empty,
+  Form,
+  InputNumber,
+  List,
+  Modal,
+  Popconfirm,
+  Row,
+  Spin,
+  Tooltip,
+} from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { theme } from "@src/styles/theme";
-import HeaderWithLink from "@src/components/headerWithLink";
-import NftList from "@src/components/lists/nftList";
-import { useState, useEffect, Fragment } from "react";
-import ProfileNftList from "@src/components/lists/profileNftList";
-import message from "@src/helpers/message";
-import time, { shortTime, timeWithHour } from "@src/helpers/time";
-import textDots from "@src/helpers/textDots";
-import blockExplorerLink from "@src/helpers/getters/blockExplorerLink";
-import { networkPrice, usdPriceDollor } from "@src/helpers/getters/price";
-import { getUser, isAuth } from "@src/helpers/authUtils";
-import AvatarWithVerified from "@src/components/avatarWithVerify";
-import useActivityColumns from "@src/helpers/activityColumns";
-import UserIdWithAvatar from "@src/components/userIdWithAvatar";
-import getCurrentNetwork from "@src/helpers/getCurrentNetwork";
+import { get, isEmpty } from "lodash";
+import Link from "next/link";
+import { Fragment, useEffect, useState } from "react";
+import { TbClick, TbInfoCircle, TbTag } from "react-icons/tb";
 
 const { Panel } = Collapse;
 export default function CollectionId({ data, slug, listingInfo }) {
-
-
-
   const [t, i18n] = useTranslation("common");
   const activityColumns = useActivityColumns(false, data.blockChain);
   const router = useRouter();
@@ -162,8 +154,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
   const itemPrice = get(data, "price.unitPrice", 0);
   const priceHistory = get(data, "priceHistory", []);
 
-  const network = getCurrentNetwork()
-
+  const network = getCurrentNetwork();
 
   async function getListingsApi(offset = 1) {
     try {
@@ -366,7 +357,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
       title: t("unit price"),
       dataIndex: "unitPrice",
       key: "unitPrice",
-      render: (unitPrice, { }) => (
+      render: (unitPrice, {}) => (
         <NetworkIconWithPrice
           secondaryDesign={true}
           blockchain={blockChain}
@@ -378,7 +369,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
       title: t("floor diffrence"),
       dataIndex: "floorPriceDiff",
       key: "floorPriceDiff",
-      render: (floorPrice, { }) => {
+      render: (floorPrice, {}) => {
         const { amount, isHigher } = floorPrice;
         if (amount === 0) {
           return "--";
@@ -418,9 +409,9 @@ export default function CollectionId({ data, slug, listingInfo }) {
         <li key={i}>
           <span className="property-title">{key}</span>
           <span className="property-value">{value}</span>
-          <span className="property-desc">&nbsp;{`${percent}% ${t(
-            "have this trait"
-          )}`}</span>
+          <span className="property-desc">
+            &nbsp;{`${percent}% ${t("have this trait")}`}
+          </span>
         </li>
       );
     });
@@ -500,7 +491,11 @@ export default function CollectionId({ data, slug, listingInfo }) {
   }
   async function cancelListing() {
     try {
-      if (blockChain && network.blockChain && blockChain !== network.blockChain) {
+      if (
+        blockChain &&
+        network.blockChain &&
+        blockChain !== network.blockChain
+      ) {
         message("info", t(`Wrong network! please switch to ${blockChain}`));
         return false;
       }
@@ -582,7 +577,11 @@ export default function CollectionId({ data, slug, listingInfo }) {
   async function onFixPurchase() {
     if (isAuth()) {
       try {
-        if (blockChain && network.blockChain && blockChain !== network.blockChain) {
+        if (
+          blockChain &&
+          network.blockChain &&
+          blockChain !== network.blockChain
+        ) {
           message("info", t(`Wrong network! please switch to ${blockChain}`));
           return false;
         }
@@ -593,7 +592,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
           itemId,
           listingId: currentBidOrFixActionDetails.listingId,
           quantity: currentBidOrFixActionDetails.remainedQuantity,
-          blockChain: blockChain
+          blockChain: blockChain,
         });
         const txConfig = {
           ...step1Response.data.data.txConfig,
@@ -606,7 +605,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
         const step2Response = await postRequest(API_URL_CHECKOUT_STEP2, {
           itemId,
           txId: txHash,
-          blockChain: blockChain
+          blockChain: blockChain,
         });
         message("success", t("your purchase has been done!"));
         window.location.reload();
@@ -627,10 +626,13 @@ export default function CollectionId({ data, slug, listingInfo }) {
     setIsModalOpenOffer(true);
   }
   async function onMakeOffer(values) {
-
     if (isAuth()) {
       try {
-        if (blockChain && network.blockChain && blockChain !== network.blockChain) {
+        if (
+          blockChain &&
+          network.blockChain &&
+          blockChain !== network.blockChain
+        ) {
           message("info", t(`Wrong network! please switch to ${blockChain}`));
           return false;
         }
@@ -641,7 +643,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
           ...values,
           itemId,
           listingId: currentBidOrFixActionDetails.listingId,
-          blockChain: blockChain
+          blockChain: blockChain,
         });
         const txConfig = {
           ...step1Response.data.data.txConfig,
@@ -654,7 +656,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
         const step2Response = await postRequest(API_URL_POST_OFFER_STEP2, {
           itemId,
           txId: txHash,
-          blockChain: blockChain
+          blockChain: blockChain,
         });
         message("success", t("your OFFER has been sent!"));
         window.location.reload();
@@ -682,7 +684,9 @@ export default function CollectionId({ data, slug, listingInfo }) {
                   ) : (
                     <Fragment />
                   )}
-                  <span className="network-value">{`${unitPrice} ${blockChain === "POLYGON" ? "MATIC" : "BNB"}`}</span>
+                  <span className="network-value">{`${unitPrice} ${
+                    blockChain === "POLYGON" ? "MATIC" : "BNB"
+                  }`}</span>
                   <span className="usd-value">{`(${usdPriceDollor(
                     usdPrice
                   )})`}</span>
@@ -716,7 +720,9 @@ export default function CollectionId({ data, slug, listingInfo }) {
                   {t("Minimum bid -- Reserve price not met.")}
                 </p>
                 <div className="amount">
-                  <span className="network-value">{unitPrice} {blockChain === "POLYGON" ? "MATIC" : "BNB"}</span>
+                  <span className="network-value">
+                    {unitPrice} {blockChain === "POLYGON" ? "MATIC" : "BNB"}
+                  </span>
                   <span className="usd-value">{`( ${usdPriceDollor(
                     usdPrice
                   )})`}</span>
@@ -758,7 +764,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
         );
         setIsFavourited(response.data.data.flag);
         setTotalFavourites(response.data.data.totalFavourites);
-      } catch (e) { }
+      } catch (e) {}
     } else {
       message("info", t("please login/register first!"));
     }
@@ -831,13 +837,21 @@ export default function CollectionId({ data, slug, listingInfo }) {
                 xxl={{ span: 8, order: 1 }}
               >
                 <div className="asset-file">
-                  <LazyLoadImage radius={true} width="100%" src={fileUrl} alt={title} />
+                  <LazyLoadImage
+                    radius={true}
+                    width="100%"
+                    src={fileUrl}
+                    alt={title}
+                  />
                 </div>
                 <div style={{ background: "#1A1C1E" }}>
                   <div className="item-description desc ">
                     <h5>
                       <span>
-                        <i className="bi bi-list" />
+                        <img
+                          src="/assets/icons/menuIcon.svg"
+                          alt="traits Icon"
+                        />
                       </span>
                       {t("Description")}
                     </h5>
@@ -853,11 +867,16 @@ export default function CollectionId({ data, slug, listingInfo }) {
                       <Panel
                         header={
                           <div>
-                            <img src="/assets/icons/traits_icon.svg" alt="traits Icon" />&nbsp;&nbsp;
+                            <img
+                              src="/assets/icons/traits_icon.svg"
+                              alt="traits Icon"
+                            />
+                            &nbsp;&nbsp;
                             {t("Properties")}
                           </div>
                         }
-                        key={1}>
+                        key={1}
+                      >
                         <div className="properties">
                           <ul>{renderProperties()}</ul>
                         </div>
@@ -868,7 +887,11 @@ export default function CollectionId({ data, slug, listingInfo }) {
                         key={2}
                         header={
                           <div>
-                            <img src="/assets/icons/aboutlendo_icon.svg" alt="aboutlendo Icon" />&nbsp;&nbsp;
+                            <img
+                              src="/assets/icons/aboutlendo_icon.svg"
+                              alt="aboutlendo Icon"
+                            />
+                            &nbsp;&nbsp;
                             {`${t("about")} ${collectionName}`}
                           </div>
                         }
@@ -883,11 +906,15 @@ export default function CollectionId({ data, slug, listingInfo }) {
                         key={3}
                         header={
                           <div>
-                            <img src="/assets/icons/details_icon.svg" alt="Details Icon" />&nbsp;&nbsp;
+                            <img
+                              src="/assets/icons/details_icon.svg"
+                              alt="Details Icon"
+                            />
+                            &nbsp;&nbsp;
                             {t("details")}
                           </div>
-                        }>
-
+                        }
+                      >
                         <div className="details">
                           <ul>
                             <li>
@@ -899,7 +926,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
                                   href={blockExplorerLink(
                                     contractAddress,
                                     "address",
-                                    '',
+                                    "",
                                     blockChain
                                   )}
                                   target="_blank"
@@ -1096,11 +1123,19 @@ export default function CollectionId({ data, slug, listingInfo }) {
                   expandIconPosition="end"
                   defaultActiveKey={[1, 2, 3]}
                 >
-                  <Panel key={2} header={
-                    <div>
-                      <img src="/assets/icons/activity_icon.svg" alt="Activity Icon" /> &nbsp;
-                      {t("item activity")}
-                    </div>}>
+                  <Panel
+                    key={2}
+                    header={
+                      <div>
+                        <img
+                          src="/assets/icons/activity_icon.svg"
+                          alt="Activity Icon"
+                        />{" "}
+                        &nbsp;
+                        {t("item activity")}
+                      </div>
+                    }
+                  >
                     <Table
                       columns={activityColumns}
                       rowKey="id"
@@ -1115,7 +1150,6 @@ export default function CollectionId({ data, slug, listingInfo }) {
                       }}
                     />
                   </Panel>
-
                 </Collapse>
               </div>
             </Col>
@@ -1159,8 +1193,9 @@ export default function CollectionId({ data, slug, listingInfo }) {
         >
           <div className="header-summary">
             <b>{t("Item")}</b>
-            <b>{`${t("Total")} + LendoChain Fee (${SYSTEM_FIX_FEE[0].rate
-              }%)`}</b>
+            <b>{`${t("Total")} + LendoChain Fee (${
+              SYSTEM_FIX_FEE[0].rate
+            }%)`}</b>
           </div>
           <div className="purchaseDetailSummary">
             <div className="info">
@@ -1197,7 +1232,7 @@ export default function CollectionId({ data, slug, listingInfo }) {
               </div>
               <div className="price-usd">{`${usdPriceDollor(
                 currentBidOrFixActionDetails.usdPrice *
-                currentBidOrFixActionDetails.remainedQuantity
+                  currentBidOrFixActionDetails.remainedQuantity
               )}`}</div>
               <span className="total">{`${t("Total: ")} (${calculateTotal(
                 currentBidOrFixActionDetails.unitPrice,
@@ -1217,8 +1252,9 @@ export default function CollectionId({ data, slug, listingInfo }) {
         >
           <div className="header-summary">
             <b>{t("Item")}</b>
-            <b>{`${t("Total")} + LendoChain Fee (${SYSTEM_BID_FEE[0].rate
-              }%)`}</b>
+            <b>{`${t("Total")} + LendoChain Fee (${
+              SYSTEM_BID_FEE[0].rate
+            }%)`}</b>
           </div>
           <div className="purchaseDetailSummary">
             <div className="info">
@@ -1379,8 +1415,6 @@ export default function CollectionId({ data, slug, listingInfo }) {
   );
 }
 
-
-
 export const getServerSideProps = async ctx => {
   const { res, req, params, locale, query } = ctx;
   const { slug } = params;
@@ -1412,6 +1446,3 @@ export const getServerSideProps = async ctx => {
     },
   };
 };
-
-
-
