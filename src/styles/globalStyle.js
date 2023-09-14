@@ -4,6 +4,18 @@ import mediaQuery from "./MediaQuery";
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
+  .notFound {
+    border-radius: 0.625rem;
+    border: 1px solid #acacac;
+    height: 22.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+    color: #acacac;
+    font-weight: 400;
+  }
   link[rel="manifest"] {
     --pwacompat-splash-font: Roboto;
   }

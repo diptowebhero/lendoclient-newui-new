@@ -1,13 +1,13 @@
-import Link from "next/link";
-import Style from "./style";
-import { useTranslation } from "next-i18next";
-import moment from "moment";
+import LazyLoadImage from "@src/components/lazyLoadImage";
 import textDots from "@src/helpers/textDots";
-import get from "lodash/get";
-import isEmpty from "lodash/isEmpty";
 import { ROUTE_SINGLE_BLOG } from "@src/routes";
 import { Empty } from "antd";
-import LazyLoadImage from "@src/components/lazyLoadImage";
+import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
+import moment from "moment";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import Style from "./style";
 
 function PostItem({ data }) {
   const [t, i18n] = useTranslation("common");

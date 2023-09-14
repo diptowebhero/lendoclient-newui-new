@@ -1,5 +1,5 @@
-import Style from "./style";
 import { Table as AntdTable } from "antd";
+import Style from "./style";
 
 export default function Table(props) {
   return (
@@ -20,4 +20,3 @@ export default function Table(props) {
     </Style>
   );
 }
-

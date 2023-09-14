@@ -4,8 +4,8 @@ export const Style = styled.div`
   .image {
     position: relative;
     .avatar {
-      width: ${props => (props.avatarSize === "medium" ? "50px" : "26px")};
-      height: ${props => (props.avatarSize === "medium" ? "50px" : "26px")};
+      width: ${props => (props.avatarSize === "medium" ? "39px" : "26px")};
+      height: ${props => (props.avatarSize === "medium" ? "39px" : "26px")};
       object-fit: cover;
       border-radius: 50%;
     }

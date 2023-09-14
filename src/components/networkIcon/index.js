@@ -1,19 +1,19 @@
 import { Fragment } from "react";
 import Style from "./style";
 
-export default function NetworkIcon({
-  blockchain = ""
-}) {
+export default function NetworkIcon({ blockchain = "" }) {
   function renderFarm() {
     switch (blockchain.toLowerCase()) {
       case "bsc":
         return (
           <Fragment>
             <Fragment>
-              <img src="/assets/icons/bsc.svg" title="Binance Smart Chain" />
-              <span className="price">
-                {blockchain}
-              </span>
+              <img
+                style={{ width: "12px !important" }}
+                src="/assets/icons/bsc.svg"
+                title="Binance Smart Chain"
+              />
+              <span className="price">{blockchain}</span>
             </Fragment>
           </Fragment>
         );
@@ -22,16 +22,14 @@ export default function NetworkIcon({
           <Fragment>
             <Fragment>
               <img src="/assets/icons/polygon.png" title="Ploygon Chain" />
-              <span className="price">
-                {blockchain}
-              </span>
+              <span className="price">{blockchain}</span>
             </Fragment>
           </Fragment>
         );
     }
   }
   return (
-    <Style >
+    <Style>
       <Fragment>{renderFarm()}</Fragment>
     </Style>
   );

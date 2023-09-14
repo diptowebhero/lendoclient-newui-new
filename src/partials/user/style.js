@@ -17,6 +17,7 @@ export const Style = styled.div`
     letter-spacing: 0.00938rem;
     cursor: pointer;
   }
+
   .profile-menu {
     ul {
       display: flex;

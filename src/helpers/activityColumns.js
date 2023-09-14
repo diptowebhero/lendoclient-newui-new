@@ -1,13 +1,12 @@
-import React from "react";
 import AvatarWithVerified from "@src/components/avatarWithVerify";
-import textDots from "./textDots";
+import NetworkIcon from "@src/components/networkIcon";
 import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
-import { truncateAddress } from "./walletConnect/utils.web3";
 import { ROUTE_ACCOUNT_OTHERS, ROUTE_SINGLE_ASSET } from "@src/routes";
-import Link from "next/link";
 import moment from "moment";
 import { useTranslation } from "next-i18next";
-import NetworkIcon from "@src/components/networkIcon";
+import Link from "next/link";
+import textDots from "./textDots";
+import { truncateAddress } from "./walletConnect/utils.web3";
 
 export default function useActivityColumns(itHasItem = true, blockChain) {
   const [t, i18n] = useTranslation("common");
@@ -24,7 +23,7 @@ export default function useActivityColumns(itHasItem = true, blockChain) {
         key: "item",
         render: ({ name, fileUrl, slug }) => (
           <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
-            <a className="flex-inline rank-item">
+            <a className="flex-inline rank-item" style={{ columnGap: "12px" }}>
               <AvatarWithVerified
                 image={fileUrl}
                 title={name}
@@ -39,10 +38,8 @@ export default function useActivityColumns(itHasItem = true, blockChain) {
         title: t("blockChain"),
         dataIndex: "blockChain",
         key: "blockChain",
-        render: (blockChain, { }) => (
-          <NetworkIcon
-            blockchain={blockChain}
-          />
+        render: (blockChain, {}) => (
+          <NetworkIcon style={{ width: "12px" }} blockchain={blockChain} />
         ),
       },
       {
@@ -118,7 +115,12 @@ export default function useActivityColumns(itHasItem = true, blockChain) {
         dataIndex: "created_at",
         key: "time",
         render: (created_at, { txId }) => (
-          <a href={txId} rel="noreferrer" target="_blank">
+          <a
+            style={{ fontWeight: "700" }}
+            href={txId}
+            rel="noreferrer"
+            target="_blank"
+          >
             {moment(created_at).fromNow()}
           </a>
         ),
@@ -137,7 +139,7 @@ export default function useActivityColumns(itHasItem = true, blockChain) {
       title: t("price"),
       dataIndex: "unitPrice",
       key: "unitPrice",
-      render: (unitPrice, { }) => (
+      render: (unitPrice, {}) => (
         <NetworkIconWithPrice
           secondaryDesign={true}
           blockchain={blockChain}

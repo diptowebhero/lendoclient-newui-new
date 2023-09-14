@@ -1,12 +1,18 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Tooltip, message, Form, Collapse } from "antd";
 import Style from "@partials/user/style";
-import Mainlayout from "@src/components/layouts/mainLayout";
-import Seo from "@src/components/seo";
+import AvatarWithVerified from "@src/components/avatarWithVerify";
 import HeaderProfile from "@src/components/headerProfile";
-import { TbShare } from "react-icons/tb";
-import Link from "next/link";
+import Mainlayout from "@src/components/layouts/mainLayout";
+import NetworkIcon from "@src/components/networkIcon";
+import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
+import ProfileSocial from "@src/components/profileSocial";
+import Seo from "@src/components/seo";
+import Table from "@src/components/table";
+import { SITE_URL } from "@src/config";
+import { getRequest, redirectOnServer } from "@src/helpers/api";
+import copyTextToClipboard from "@src/helpers/copyToClipboard";
+import textDots from "@src/helpers/textDots";
+import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
+import { API_URL_PROFILE } from "@src/partials/user/const";
 import {
   ROUTE_ACCOUNT_OTHERS,
   ROUTE_ACCOUNT_OTHERS_ACTIVITY,
@@ -17,24 +23,34 @@ import {
   ROUTE_ACCOUNT_OTHERS_MADE_OFFER,
   ROUTE_SINGLE_ASSET,
 } from "@src/routes";
-import { getRequest, redirectOnServer } from "@src/helpers/api";
-import { API_URL_PROFILE } from "@src/partials/user/const";
+import { ConfigProvider, Form, Tooltip, message } from "antd";
 import get from "lodash/get";
-import { useState, Fragment } from "react";
-import { useRouter } from "next/router";
-import copyTextToClipboard from "@src/helpers/copyToClipboard";
-import { SITE_URL } from "@src/config";
-import ProfileSocial from "@src/components/profileSocial";
-import { truncateAddress } from "@src/helpers/walletConnect/utils.web3";
-import Table from "@src/components/table";
-import AvatarWithVerified from "@src/components/avatarWithVerify";
-import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
-import textDots from "@src/helpers/textDots";
 import moment from "moment";
-import NetworkIcon from "@src/components/networkIcon";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { TbShare } from "react-icons/tb";
+
+// customize empty design components
+const customizeRenderEmpty = () => (
+  <div
+    className="notFound"
+    style={{
+      textAlign: "center",
+    }}
+  >
+    <img src="/assets/icons/empty.svg" alt="" />
+    <p>Data Not Found</p>
+  </div>
+);
 
 export default function AccountOther(props) {
   const { profileData, collectedData, usernameParam } = props;
+
+  // customize empty design state
+  const [customize, setCustomize] = useState(true);
 
   const [t, i18n] = useTranslation("common");
   const [form] = Form.useForm();
@@ -72,11 +88,7 @@ export default function AccountOther(props) {
       title: t("blockChain"),
       dataIndex: "item",
       key: "item",
-      render: ({ blockChain }) => (
-        <NetworkIcon
-          blockchain={blockChain}
-        />
-      ),
+      render: ({ blockChain }) => <NetworkIcon blockchain={blockChain} />,
     },
     {
       title: t("unit price"),
@@ -94,7 +106,7 @@ export default function AccountOther(props) {
       title: t("floor diffrence"),
       dataIndex: "floorPriceDiff",
       key: "floorPriceDiff",
-      render: (floorPrice, { }) => {
+      render: (floorPrice, {}) => {
         const { amount, isHigher } = floorPrice;
         if (amount === 0) {
           return "--";
@@ -139,6 +151,7 @@ export default function AccountOther(props) {
       query: { ...query, offset: page },
     });
   }
+
   return (
     <Style>
       <Seo title={username || publicAddress} desc={bio} isHome={false} />
@@ -268,18 +281,22 @@ export default function AccountOther(props) {
             </div>
             <div className="pb40">
               <div className="list pt40 pb40">
-                <Table
-                  columns={columns}
-                  rowKey={"id"}
-                  dataSource={offerItems}
-                  pagination={{
-                    onChange: onChangePagination,
-                    total: total,
-                    current: offset,
-                    defaultPageSize: 12,
-                    hideOnSinglePage: true,
-                  }}
-                />
+                <ConfigProvider
+                  renderEmpty={customize ? customizeRenderEmpty : undefined}
+                >
+                  <Table
+                    columns={columns}
+                    rowKey={"id"}
+                    dataSource={offerItems}
+                    pagination={{
+                      onChange: onChangePagination,
+                      total: total,
+                      current: offset,
+                      defaultPageSize: 12,
+                      hideOnSinglePage: true,
+                    }}
+                  />
+                </ConfigProvider>
               </div>
             </div>
           </div>
