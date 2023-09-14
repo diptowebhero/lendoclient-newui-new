@@ -4,6 +4,10 @@ import mediaQuery from "./MediaQuery";
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
+  .feaZsQ,
+  .kXcXzM img {
+    width: 12px !important;
+  }
   .notFound {
     border-radius: 0.625rem;
     border: 1px solid #acacac;
