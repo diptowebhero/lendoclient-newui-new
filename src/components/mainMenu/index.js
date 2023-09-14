@@ -1,16 +1,20 @@
-import { Fragment, useEffect, useState } from "react";
-import Link from "next/link";
-import { useTranslation } from "next-i18next";
-import Style from "./style";
 import Icon, {
+  EditOutlined,
   MenuOutlined,
   SearchOutlined,
   SettingOutlined,
   TableOutlined,
   UserOutlined,
-  EditOutlined,
 } from "@ant-design/icons";
-import { Drawer, Button, Menu, Dropdown } from "antd";
+import detectEthereumProvider from "@metamask/detect-provider";
+import { hooks, metaMask } from "@src/components/wallet/connectors/metamask";
+import WalletModal from "@src/components/wallet/walletModal";
+import { SITE_URL } from "@src/config";
+import AccountBalanceWalletDrawerContainer from "@src/containers/accountBalanceWalletDrawer";
+import IsWalletConnectedContainer from "@src/containers/isWalletConnected";
+import UserContainer from "@src/containers/userContainer";
+import Web3ModalContainer from "@src/containers/web3modal";
+import { getUser, isAuth, removeCredentials } from "@src/helpers/authUtils";
 import {
   ROUTE_ACCOUNT,
   ROUTE_ACCOUNT_SETTING,
@@ -18,24 +22,16 @@ import {
   ROUTE_EXPLORE,
   ROUTE_MY_COLLECTIONS,
   ROUTE_RANKINGS,
-  ROUTE_HOME,
 } from "@src/routes";
-import { useRouter } from "next/router";
-import WalletModal from "@src/components/wallet/walletModal";
-import Web3ModalContainer from "@src/containers/web3modal";
-import { hooks, metaMask } from "@src/components/wallet/connectors/metamask";
-import AccountBalanceDrawer from "../wallet/walletBalanceDrawer";
-import AccountBalanceWalletDrawerContainer from "@src/containers/accountBalanceWalletDrawer";
-import ProfileAvatar from "../profileAvatar";
-import UserContainer from "@src/containers/userContainer";
+import { Button, Drawer, Dropdown, Menu } from "antd";
 import { get, isEmpty } from "lodash";
-import { SITE_URL } from "@src/config";
-import { getUser, isAuth } from "@src/helpers/authUtils";
-import { removeCredentials } from "@src/helpers/authUtils";
-import detectEthereumProvider from "@metamask/detect-provider";
-import message from "@src/helpers/message";
-import IsWalletConnectedContainer from "@src/containers/isWalletConnected";
-
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from "react";
+import ProfileAvatar from "../profileAvatar";
+import AccountBalanceDrawer from "../wallet/walletBalanceDrawer";
+import Style from "./style";
 
 const {
   useChainId,
@@ -48,24 +44,22 @@ const {
 
 const MENU_ITEMS = [
   {
-    title: "explore",
+    title: "explores",
     link: ROUTE_EXPLORE,
     classStyle: "wallet",
-    img: "/assets/images/img/binancedexicon.png"
+    img: "/assets/images/img/binancedexicon.png",
   },
   {
     title: "Rankings",
     link: { pathname: ROUTE_RANKINGS, query: { sortBy: "TOP" } },
     classStyle: "rewards",
-    img: "/assets/images/img/rewardsicon.png"
-
+    img: "/assets/images/img/rewardsicon.png",
   },
   {
     title: "Create",
     link: ROUTE_CREATE_NFT,
     classStyle: "create",
-    img: "/assets/images/img/addicon.png"
-
+    img: "/assets/images/img/addicon.png",
   },
 ];
 
@@ -90,7 +84,7 @@ export default function MainMenu({ MobileSearchToggle }) {
     const provider = await detectEthereumProvider();
     if (provider) {
       provider.on("chainChanged", _chainId => {
-        metaMask.connectEagerly().catch(() => { });
+        metaMask.connectEagerly().catch(() => {});
       });
     }
   }
@@ -154,7 +148,6 @@ export default function MainMenu({ MobileSearchToggle }) {
       });
   }, []);
 
-
   const UserMenu = (
     <Menu
       style={{ width: 216, background: "#2A2C2D" }}
@@ -215,7 +208,7 @@ export default function MainMenu({ MobileSearchToggle }) {
       return (
         <li className={`menu-item ${classStyle}`} key={index}>
           <Link href={link} prefetch={false}>
-            <div className={`${classStyle}`} style={{ height: '40px' }}>
+            <div className={`${classStyle}`} style={{ height: "40px" }}>
               <img src={img} alt={classStyle} /> &nbsp;&nbsp;
               <a className={`${router.pathname === link ? "active" : null} `}>
                 {t(title)}
@@ -431,6 +424,3 @@ export default function MainMenu({ MobileSearchToggle }) {
     </Style>
   );
 }
-
-
-

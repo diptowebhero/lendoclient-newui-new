@@ -1,17 +1,11 @@
-import Style from "./style";
-import { useTranslation } from "next-i18next";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay } from "swiper";
-import { Fragment, useRef, useState } from "react";
-import Icon, {
-  RightOutlined,
-  LeftOutlined,
-  ConsoleSqlOutlined,
-} from "@ant-design/icons";
+import Icon, { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Select } from "antd";
-import CollectionCard from "@src/components/cards/collectionCard";
+import { useTranslation } from "next-i18next";
+import { useRef } from "react";
+import { Autoplay, FreeMode } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import CardNFT from "../lists/nftList/CardNFT";
-
+import Style from "./style";
 
 const { Option } = Select;
 
@@ -25,7 +19,7 @@ export default function CollectionFullSlider(props) {
       return (
         <SwiperSlide key={item.id}>
           {/* <CollectionCard data={item}></CollectionCard> */}
-          <CardNFT data={item} size="medium" ></CardNFT>
+          <CardNFT data={item} size="medium"></CardNFT>
         </SwiperSlide>
       );
     });
@@ -52,20 +46,20 @@ export default function CollectionFullSlider(props) {
     },
     // breakpoints: {
     //   1200: {
-    //     slidesPerView: 4, 
-    //     spaceBetween: 20, 
+    //     slidesPerView: 4,
+    //     spaceBetween: 20,
     //   },
     //   950: {
-    //     slidesPerView: 3, 
-    //     spaceBetween: 10, 
+    //     slidesPerView: 3,
+    //     spaceBetween: 10,
     //   },
     //   768: {
-    //     slidesPerView: 2, 
-    //     spaceBetween: 10, 
+    //     slidesPerView: 2,
+    //     spaceBetween: 10,
     //   },
     //   450: {
-    //     slidesPerView: 1, 
-    //     spaceBetween: 10, 
+    //     slidesPerView: 1,
+    //     spaceBetween: 10,
     //   },
     // },
   };
@@ -92,17 +86,19 @@ export default function CollectionFullSlider(props) {
                 onClick={() => SliderRef.current.swiper.slideNext()}
               >
                 <Icon component={RightOutlined} />
-              </div>&nbsp;&nbsp;&nbsp;
-
-              <a class="read_more text-decoration-none" href="/explore-art" style={{ color: '#ACACAC', marginTop: '3%' }} >
+              </div>
+              &nbsp;&nbsp;&nbsp;
+              <a
+                class="read_more text-decoration-none"
+                href="/explore-art"
+                style={{ color: "#ACACAC", marginTop: "3%" }}
+              >
                 <span>View All Trending Auctions &gt; </span>
                 <span>
                   <i class="bi bi-chevron-right"></i>
                 </span>
               </a>
             </div>
-
-
           </div>
         </div>
 

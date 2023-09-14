@@ -71,7 +71,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     font-size: 16px;
   }
   #__next {
-    overflow-x: hidden;
+    // overflow-x: hidden;
     width: 100%;
   }
   body {
@@ -302,7 +302,7 @@ export const GlobalStyle = styled.createGlobalStyle`
       h5 {
         font-size: 2rem;
         margin: 0;
-        color:white;
+        color: white;
       }
       .ant-btn-primary.ant-btn-lg {
         border-radius: 6px;
@@ -990,7 +990,7 @@ export const GlobalStyle = styled.createGlobalStyle`
           font-size: 1.1rem;
           border-radius: 0 !important;
           padding: 0 !important;
-          color:white;
+          color: white;
           .ant-collapse-arrow {
             right: 0;
           }
@@ -1073,7 +1073,7 @@ export const GlobalStyle = styled.createGlobalStyle`
   .double-link {
     ul {
       display: flex;
-      border: 1px solid #E46400;
+      border: 1px solid #e46400;
       border-radius: 10px;
       padding: 0 11px;
       li {
@@ -1459,23 +1459,23 @@ export const GlobalStyle = styled.createGlobalStyle`
     display: none;
   }
 
-  .select_ant{
-      display:flex;
-      gap:5px;
-      align-items: center;
+  .select_ant {
+    display: flex;
+    gap: 5px;
+    align-items: center;
   }
-  .ant-drawer-wrapper-body{
-    background:#181818;
+  .ant-drawer-wrapper-body {
+    background: #181818;
   }
-  .ant-checkbox-wrapper{
-    color:#888888;
+  .ant-checkbox-wrapper {
+    color: #888888;
   }
   .filter-drawer .ant-drawer-header .ant-drawer-close {
-    border: 1px solid #E46400; 
+    border: 1px solid #e46400;
     border-radius: 10px;
     padding: 15px;
-    background: #E46400;
-    color:white ;
+    background: #e46400;
+    color: white;
   }
   .ant-dropdown-menu-title-content {
     flex: auto;
@@ -1484,16 +1484,15 @@ export const GlobalStyle = styled.createGlobalStyle`
   .ant-btn.ant-btn-default:hover {
     background: none;
   }
-  .ant-dropdown-menu-item:hover{
+  .ant-dropdown-menu-item:hover {
     background: rgba(172, 172, 172, 0.3);
   }
-  .ant-dropdown-menu-item-divider{
-    background:#181818;
+  .ant-dropdown-menu-item-divider {
+    background: #181818;
   }
-  .ant-dropdown-menu-item{
-    span{
-      color:white;
+  .ant-dropdown-menu-item {
+    span {
+      color: white;
     }
   }
 `;
-

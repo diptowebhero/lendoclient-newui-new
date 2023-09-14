@@ -1,20 +1,20 @@
-import Link from "next/link";
+import LazyLoadImage from "@src/components/lazyLoadImage";
 import UserIdWithAvatar from "@src/components/userIdWithAvatar";
-import Style from "./style";
-import { Row, Col, Empty } from "antd";
-import { useTranslation } from "next-i18next";
-import { Fragment } from "react";
-import Countdown from "react-countdown";
+import { networkPrice } from "@src/helpers/getters/price";
+import { ROUTE_SINGLE_ASSET } from "@src/routes";
+import { Col, Empty, Row } from "antd";
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
-import LazyLoadImage from "@src/components/lazyLoadImage";
-import { ROUTE_SINGLE_ASSET } from "@src/routes";
-import { networkPrice } from "@src/helpers/getters/price";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import { Fragment } from "react";
+import Countdown from "react-countdown";
+import Style from "./style";
 
 const AUCTION = "BID";
 const FIX = "FIX";
 
-function CardNft({ data, size,userAdd }) {
+function CardNft({ data, size, userAdd }) {
   const [t, i18n] = useTranslation("common");
   const renderCountdown = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -23,7 +23,7 @@ function CardNft({ data, size,userAdd }) {
       return <span>{`${days}d ${hours}h ${minutes}m ${seconds}s`}</span>;
     }
   };
-  
+
   function renderType(type, price, blockchain) {
     if (type === FIX) {
       return (
@@ -80,9 +80,9 @@ function CardNft({ data, size,userAdd }) {
   const asset = get(data, "asset", "");
   const price = get(data, "price", "");
   const collection = get(data, "collection", "");
-  const username =  userAdd || get(data, "creator.username", "")
+  const username = userAdd || get(data, "creator.username", "");
   const avatar = get(data, "creator.avatar", "");
-  const publicAddress = userAdd ||get(data, "creator.publicAddress", "");
+  const publicAddress = userAdd || get(data, "creator.publicAddress", "");
   const type = get(data, "price.type", "");
   const unitPrice = get(data, "price.unitPrice", 0);
   const previousUnitPrice = get(data, "price.previousUnitPrice", "");
@@ -116,10 +116,12 @@ function CardNft({ data, size,userAdd }) {
   const isActive = get(data, "collection.isActive", "");
   const listingsIsActive = get(data, "listings[0].isActive", false);
 
-  
   return (
     <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
-      <a className="nft-card" style={{ background: "#1D2022", border: "0.5px solid #404242" }} >
+      <a
+        className="nft-card"
+        style={{ background: "#1D2022", border: "0.5px solid #404242" }}
+      >
         <div className="top">
           <div className="hover-box">
             <div className="padding-box">
@@ -156,9 +158,8 @@ function CardNft({ data, size,userAdd }) {
   );
 }
 
-
 export default function NftList(props) {
-  const { data,userAdd, size = "medium" } = props;
+  const { data, userAdd, size = "medium" } = props;
   function renderFarm() {
     return data.map(item => {
       return (

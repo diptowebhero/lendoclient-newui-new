@@ -1,15 +1,14 @@
-import styled from "styled-components";
 import mediaQuery from "@src/styles/MediaQuery";
+import styled from "styled-components";
 
 export const Style = styled.div`
-
-    background: ${props => props.theme.colors.secondaryBackground};
-    position: fixed;
-    z-index: 999;
-    width: 100vw;
-    padding: 15px 0;
-    overflow: ${props => props.overflow};
-    // margin-top:-5%;
+  background: ${props => props.theme.colors.secondaryBackground};
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  padding: 15px 0;
+  overflow: ${props => props.overflow};
+  // margin-top:-5%;
 
   .circle-shape {
     position: absolute;
@@ -78,8 +77,8 @@ export const Style = styled.div`
       max-width: 100%;
     }
   }
-  .ogo-bar-right-true{
-    display:flex;
+  .ogo-bar-right-true {
+    display: flex;
   }
   .arrow-bar-right-true {
     margin-right: 12%;
@@ -94,7 +93,5 @@ export const Style = styled.div`
       display: block;
     `}
   }
-    
-    
 `;
 export default Style;

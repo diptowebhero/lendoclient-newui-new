@@ -5,19 +5,19 @@ export const Style = styled.div`
     .bidderimgs img {
       width: 30px;
       border-radius: 50%;
-      border: 2px solid #ACACAC;
-  }
-  .bidderimgs img:nth-child(2),
-  .bidderimgs img:nth-child(3) {
+      border: 2px solid #acacac;
+    }
+    .bidderimgs img:nth-child(2),
+    .bidderimgs img:nth-child(3) {
       margin-left: -15px;
-  }
-  
+    }
+
     display: grid;
     grid-template-columns: ${props =>
       props.size === "small"
         ? "repeat(auto-fill, minmax(200px, 1fr))"
         : props.size === "medium"
-        ? "repeat(auto-fill, minmax(240px, 1fr))"
+        ? "repeat(auto-fill, minmax(226px, 1fr))"
         : props.size === "large"
         ? "repeat(auto-fill, minmax(320px, 1fr))"
         : ""};
@@ -126,9 +126,10 @@ export const Style = styled.div`
         min-height: 118px;
         .item-title {
           margin-bottom: 20px;
-          font-size: ${props => (props.size === "large" ? "1.1rem" : "1rem")};
+          font-size: ${props =>
+            props.size === "large" ? "1.1rem" : "0.9375rem"};
           font-weight: 500;
-          color:white;
+          color: white;
         }
 
         .information {

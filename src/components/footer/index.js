@@ -1,7 +1,7 @@
-import Link from "next/link";
-import Style from "./style";
-import { Row, Col, Form, Input, Button } from "antd";
-import { useTranslation } from "next-i18next";
+import { postRequest } from "@src/helpers/api";
+import message from "@src/helpers/message";
+import { getYear } from "@src/helpers/time";
+import { API_URL_NEWSLETTER } from "@src/partials/home/const";
 import {
   ROUTE_ABOUT,
   ROUTE_ACCOUNT,
@@ -15,16 +15,15 @@ import {
   ROUTE_SINGLE_CATEGORY,
   ROUTE_TERMS,
 } from "@src/routes";
-import { getYear } from "@src/helpers/time";
-import { postRequest } from "@src/helpers/api";
-import { API_URL_NEWSLETTER } from "@src/partials/home/const";
+import { Button, Col, Form, Input, Row } from "antd";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useState } from "react";
-import message from "@src/helpers/message";
-import BinanceSC from './svg/binanceSC.svg'
-import Tatum from './svg/tatum.svg'
-import Metamask from './svg/metamask.svg'
-import Twittericon from './svg/twittericon.svg'
-
+import Style from "./style";
+import BinanceSC from "./svg/binanceSC.svg";
+import Metamask from "./svg/metamask.svg";
+import Tatum from "./svg/tatum.svg";
+import Twittericon from "./svg/twittericon.svg";
 
 export default function Footer(props) {
   const [t, i18n] = useTranslation("common");
@@ -45,19 +44,28 @@ export default function Footer(props) {
   return (
     <Style>
       <div className="home-footer-section">
-        <div style={{background:"#404242"}} className="footer">
-          <Row gutter={[16, 16]} >
+        <div style={{ background: "#404242" }} className="footer">
+          <Row gutter={[16, 16]}>
             <Col xs={24} sm={24} md={24} lg={4} xl={4} />
             <Col xs={24} sm={24} md={24} lg={19} xl={19}>
               <div className="logos" style={{ marginBottom: "-3%" }}>
                 <br />
                 <div className="container">
-                  <ul >
-                    <li> <BinanceSC /> </li>
+                  <ul>
+                    <li>
+                      {" "}
+                      <BinanceSC />{" "}
+                    </li>
                     <li> &nbsp;</li>
-                    <li> <Tatum /></li>
+                    <li>
+                      {" "}
+                      <Tatum />
+                    </li>
                     <li> &nbsp; </li>
-                    <li> <Metamask /> </li>
+                    <li>
+                      {" "}
+                      <Metamask />{" "}
+                    </li>
                   </ul>
                 </div>
                 <br />
@@ -65,10 +73,9 @@ export default function Footer(props) {
             </Col>
           </Row>
         </div>
-        <div style={{background:"#2A2C2D"}} className="footer">
-          <Row gutter={[16, 16]} >
-            <Col xs={24} sm={24} md={24} lg={4} xl={4}>
-            </Col>
+        <div style={{ background: "#2A2C2D" }} className="footer">
+          <Row gutter={[16, 16]}>
+            <Col xs={24} sm={24} md={24} lg={4} xl={4}></Col>
             <Col xs={24} sm={24} md={24} lg={19} xl={19}>
               <div className="footer-wrapper">
                 <div className="container">
@@ -90,7 +97,6 @@ export default function Footer(props) {
                             onFinish={onFinishNewsletter}
                           >
                             <Form.Item
-
                               className="input-section "
                               name="email"
                               rules={[
@@ -107,13 +113,21 @@ export default function Footer(props) {
                                 placeholder={t("please enter your email")}
                               />
                             </Form.Item>
-                            <Form.Item style={{ marginLeft: "-10%" }} className="button-section">
+                            <Form.Item
+                              style={{ marginLeft: "-10%" }}
+                              className="button-section"
+                            >
                               <Button
                                 loading={loading}
                                 className="white email-send-btn"
                                 size="large"
                                 htmlType="submit"
-                                style={{ background: "#E46400", color: "white", marginTop: ' -1%', marginLeft: '-13%' }}
+                                style={{
+                                  background: "#E46400",
+                                  color: "white",
+                                  marginTop: " -1%",
+                                  marginLeft: "-13%",
+                                }}
                               >
                                 {t("Send")}
                               </Button>
@@ -123,10 +137,17 @@ export default function Footer(props) {
                       </Col>
                       <Col xs={24} sm={24} md={8} lg={7} xl={7} />
                       <Col xs={24} sm={24} md={5} lg={6} xl={6}>
-                        <br /><br /><br />
-                        <div className="social" style={{ display: "flex", marginTop: "20%" }}>
+                        <br />
+                        <br />
+                        <br />
+                        <div
+                          className="social"
+                          style={{ display: "flex", marginTop: "20%" }}
+                        >
                           <div>
-                            <h3 className="title"><b>{t("Join the community")}</b></h3>
+                            <h3 className="title">
+                              <b>{t("Join the community")}</b>
+                            </h3>
                           </div>
                           <div style={{ margin: "-15% 0 0 8%" }}>
                             <ul>
@@ -151,6 +172,7 @@ export default function Footer(props) {
                               "The world’s first and largest digital marketplace for crypto collectibles and non-fungible tokens (NFTs). Buy, sell, and discover exclusive digital items."
                             )}
                           </p>
+                          <p>{t("Let’s build #BNBChainNFTs. ")}</p>
                         </div>
                       </Col>
                       <Col xs={12} sm={12} md={6} lg={4} xl={4}>
@@ -199,7 +221,10 @@ export default function Footer(props) {
                         </div>
                       </Col>
                       <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-                        <div className="footer-menu">
+                        <div
+                          className="footer-menu"
+                          style={{ marginTop: "45px;" }}
+                        >
                           <ul>
                             <li>
                               <Link
@@ -267,7 +292,10 @@ export default function Footer(props) {
                               </Link>
                             </li>
                             <li>
-                              <Link href={ROUTE_MY_COLLECTIONS} prefetch={false}>
+                              <Link
+                                href={ROUTE_MY_COLLECTIONS}
+                                prefetch={false}
+                              >
                                 <a>{t("my collections")}</a>
                               </Link>
                             </li>
@@ -277,7 +305,10 @@ export default function Footer(props) {
                               </Link>
                             </li>
                             <li>
-                              <Link href={ROUTE_ACCOUNT_SETTING} prefetch={false}>
+                              <Link
+                                href={ROUTE_ACCOUNT_SETTING}
+                                prefetch={false}
+                              >
                                 <a>{t("setting")}</a>
                               </Link>
                             </li>
@@ -313,8 +344,11 @@ export default function Footer(props) {
             </Col>
           </Row>
         </div>
-        <div style={{ background: "#E46400", }} className="bottom-line footer-wrapper">
-          <div style={{ background: "#E46400", marginBottom: '-5%', }}>
+        <div
+          style={{ background: "#E46400" }}
+          className="bottom-line footer-wrapper"
+        >
+          <div style={{ background: "#E46400", marginBottom: "-5%" }}>
             <div className="copyright">
               <br />
               <div className="container">
@@ -348,8 +382,6 @@ export default function Footer(props) {
           </div>
         </div>
       </div>
-    </Style >
+    </Style>
   );
 }
-
-

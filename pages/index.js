@@ -1,49 +1,30 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Button, Row, Col, Dropdown, Menu, Drawer } from "antd";
-import { DownOutlined, FastForwardFilled, CheckCircleFilled } from '@ant-design/icons';
+import { DownOutlined } from "@ant-design/icons";
 import Style from "@partials/home/style";
-import Mainlayout from "@src/components/layouts/mainLayout";
-import Link from "next/link";
-import StatisticList from "@src/components/lists/statisticList";
-import Icon, { RightOutlined } from "@ant-design/icons";
-import TopCollections from "@src/components/topCollections";
-import HeaderWithLink from "@src/components/headerWithLink";
-import CollectionFullSlider from "@src/components/collecltionFullSlider";
-import TextBoxList from "@src/components/lists/textBoxList";
-import VideoBox from "@src/components/videoBox";
-import BlogList from "@src/components/lists/blogList";
-import NftList from "@src/components/lists/nftList";
 import AuctionHeroSlider from "@src/components/auctionHeroSlider";
+import CollectionFullSlider from "@src/components/collecltionFullSlider";
+import HeaderWithLink from "@src/components/headerWithLink";
+import HomeLayout from "@src/components/layouts/homeLayout";
+import NftList from "@src/components/lists/nftList";
+import TextBoxList from "@src/components/lists/textBoxList";
 import Seo from "@src/components/seo";
-import get from "lodash/get";
-import {
-  ROUTE_ABOUT,
-  ROUTE_ALL_ASSETS,
-  ROUTE_BLOG,
-  ROUTE_CREATE_NFT,
-  ROUTE_EXPLORE,
-  ROUTE_LOGIN,
-  ROUTE_RANKINGS,
-} from "@src/routes";
-import { useEffect, useState } from "react";
+import TopCollections from "@src/components/topCollections";
 import { getRequest } from "@src/helpers/api";
+import { removeCredentials } from "@src/helpers/authUtils";
 import {
   API_URL_MAIN_PAGE,
   API_URL_STATISTICS,
 } from "@src/partials/home/const";
-import { useRouter } from "next/router";
-import { removeCredentials } from "@src/helpers/authUtils";
-import { metaMask } from "@src/components/wallet/connectors/metamask";
-import { ROUTE_HOME } from "@src/routes";
+import { ROUTE_ALL_ASSETS, ROUTE_HOME, ROUTE_RANKINGS } from "@src/routes";
 import Sidebar from "@src/sidebar";
-import HomeLayout from "@src/components/layouts/homeLayout";
-
-
+import { Col, Drawer, Row } from "antd";
+import get from "lodash/get";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Home(props) {
   const [visibleDrawer, setVisibleDrawer] = useState(false);
-
 
   const { statisticsData, mainPageData } = props;
   const router = useRouter();
@@ -115,7 +96,7 @@ export default function Home(props) {
       description:
         "Once you’ve set up your wallet of choice, connect it to LendoChain by clicking the wallet icon in the top right corner. Learn about the wallets we support.",
       slug: "sample-test",
-      clssName: 'first-steps'
+      clssName: "first-steps",
     },
     {
       subject: "Create your \ncollection",
@@ -144,7 +125,6 @@ export default function Home(props) {
     setVisibleDrawer(false);
   };
 
-
   return (
     <Style>
       <Seo
@@ -152,11 +132,10 @@ export default function Home(props) {
         desc="Lendochain is a creative playground for artists, curators and collectors to experience the new creative economy."
         isHome={true}
       />
-      <div className="container">
-      </div>
-      <HomeLayout setVisibleDrawer={setVisibleDrawer} isHome >
-        <Row className="main-banner-img" >
-          <div style={{ width: '1.5%' }} />
+      <div className="container"></div>
+      <HomeLayout setVisibleDrawer={setVisibleDrawer} isHome>
+        <Row className="main-banner-img">
+          <div style={{ width: "1.5%" }} />
           <Col xs={24} sm={24} md={24} lg={4} xl={4}>
             <div className="main-sidebar-section">
               <Sidebar />
@@ -178,7 +157,6 @@ export default function Home(props) {
               <AuctionHeroSlider data={carousel} />
             </div>
 
-
             <div className="top-collections padding-section">
               <div className="container">
                 <HeaderWithLink
@@ -195,8 +173,12 @@ export default function Home(props) {
             <div className="trending-auctions padding-section">
               <div className="container">
                 <HeaderWithLink
-                  title="Trending "
-                  icon={<><DownOutlined /></>}
+                  title="Trending"
+                  icon={
+                    <>
+                      <DownOutlined />
+                    </>
+                  }
                   link={{
                     pathname: ROUTE_ALL_ASSETS,
                     query: { status: "BID", sortBy: "ENDING_SOON" },
@@ -225,7 +207,6 @@ export default function Home(props) {
                 <TextBoxList data={OUR_FLOW} />
               </div>
             </div>
-
           </Col>
         </Row>
       </HomeLayout>
@@ -241,7 +222,7 @@ export const getServerSideProps = async ({ res, req, params, locale }) => {
       (statisticsApiResponse = await getRequest(API_URL_STATISTICS)),
       (mainPageApiResponse = await getRequest(API_URL_MAIN_PAGE)),
     ]);
-  } catch (e) { }
+  } catch (e) {}
   return {
     props: {
       locale,

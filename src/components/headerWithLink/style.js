@@ -1,31 +1,36 @@
-import styled from "styled-components";
 import mediaQuery from "@src/styles/MediaQuery";
+import styled from "styled-components";
 
 export const Style = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 30px;
-  .titles{
+  .titles {
     font-size: 25px;
     font-weight: 700;
     color: white;
     .text_orange {
-         color: #E46400 !important;
+      color: #e46400 !important;
     }
   }
   .viewallbtn {
-    background: #E46400;
+    background: #e46400;
     font-weight: 700;
     font-size: 15px;
     line-height: 18px;
-    color: #FFFFFF;
-    padding: 10px 40px;
+    color: #ffffff;
+    max-width: 150px;
+    width: 100%;
+    height: 40px;
+    display: flex;
     border: none;
     border-radius: 50px;
+    justify-content: center;
+    align-items: center;
   }
-  .custom-btn-span{
-    font-size:25px;
-    font-weight:700;
+  .custom-btn-span {
+    font-size: 25px;
+    font-weight: 700;
   }
   ${mediaQuery.sm`
           flex-direction: column;
@@ -33,9 +38,9 @@ export const Style = styled.div`
   h2 {
     text-transform: capitalize;
   }
-  
-  .custom-menu-item{
-    span{
+
+  .custom-menu-item {
+    span {
       font-weight: 700;
       font-size: 14px;
       color: white;

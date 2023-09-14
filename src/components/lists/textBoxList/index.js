@@ -1,19 +1,25 @@
-import Style from "./style";
-import { Row, Col } from "antd";
+import { Col, Row } from "antd";
 import { useTranslation } from "next-i18next";
+import Style from "./style";
 
 function TextBoxItem({ data }) {
   const [t, i18n] = useTranslation("common");
   const { subject, icon, description, clssName } = data;
   return (
     <div className="steps  textbox-item">
-      <div className="stepcontainer" lg={6} sm={12} xs={24} style={{ marginBottom: '5rem' }}>
+      <div
+        className="stepcontainer"
+        lg={6}
+        sm={12}
+        xs={24}
+        style={{ marginBottom: "5rem" }}
+      >
         <div className={`step ${clssName ? clssName : ""}`}>
           <Row gutter={[16, 16]}>
             <Col span={24} lg={24} className="create-icon-container">
               <div>
                 <div className="mb-4 stepno">STEP 01</div>
-                <div className="mb-3 stepname">{t(subject)}</div>
+                <div className="pb-3 stepname">{t(subject)}</div>
                 <div className="aboutstep">{t(description)}</div>
               </div>
               <div className="stepicon text-end">
