@@ -39,7 +39,7 @@ export default function useActivityColumns(itHasItem = true, blockChain) {
         dataIndex: "blockChain",
         key: "blockChain",
         render: (blockChain, {}) => (
-          <NetworkIcon style={{ width: "12px" }} blockchain={blockChain} />
+          <NetworkIcon className="activityImg" blockchain={blockChain} />
         ),
       },
       {

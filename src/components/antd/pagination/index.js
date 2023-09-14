@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Style from "./style";
 import { Pagination as AntdPagination } from "antd";
 import { useTranslation } from "next-i18next";
+import Style from "./style";
 
 export default function Pagination(props) {
   const [t, i18n] = useTranslation("common");
@@ -16,14 +15,16 @@ export default function Pagination(props) {
     return (
       <Style>
         <div className="pagination pb40 pt40">
-          <div className="disabled-pagination">
+          <div
+            className="disabled-pagination text-center"
+            style={{ color: "white" }}
+          >
             {t("No items to display")}
           </div>
         </div>
       </Style>
     );
   }
-
 
   return (
     <Style>
@@ -40,5 +41,3 @@ export default function Pagination(props) {
     </Style>
   );
 }
-
-
