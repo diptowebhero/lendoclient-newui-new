@@ -120,7 +120,7 @@ function CardNft({ data, size, userAdd }) {
     <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
       <a
         className="nft-card"
-        style={{ background: "#1D2022", border: "0.5px solid #404242" }}
+        style={{ background: "#1D2022", border: "0.5px solid #1D2022" }}
       >
         <div className="top">
           <div className="hover-box">

@@ -26,7 +26,7 @@ export const Style = styled.div`
             // width: 45px;
             // height: 45px;
             object-fit: cover;
-            background:#2A2C2D;
+            background: #2a2c2d;
             margin-top: 32px;
           }
         }
@@ -41,7 +41,8 @@ export const Style = styled.div`
         .desc {
           color: ${props => props.theme.colors.gray};
           overflow: hidden;
-          font-size: 11px;
+          font-size: 10px;
+          line-height: 14px;
         }
       }
     }
@@ -52,10 +53,10 @@ export const Style = styled.div`
       }
     }
   }
-  .title{
-    color:white;
-    font-weight: 500;
-    font-size:20px;
+  .title {
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
   }
 `;
 
