@@ -40,8 +40,9 @@ export const Style = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     grid-column-gap: 16px;
+    grid-row-gap: 19px;
     .collection-item {
-      color:#ACACAC;
+      color: #acacac;
       display: flex;
       align-items: center;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -55,21 +56,23 @@ export const Style = styled.div`
         align-items: center;
         .first {
           flex-grow: 2;
-          color:white;
+          color: white;
           h3.title {
             font-weight: 500;
           }
-          .upper{
+          .upper {
             display: flex;
             justify-content: space-between;
             margin-bottom: 1px;
           }
-          .lower{
+          .lower {
             display: flex;
-            color: #ACACAC;
-            font-size: 12px;
+            color: #acacac;
+            font-size: 10px;
             align-items: center;
             justify-content: space-between;
+            line-height: 12px;
+            font-weight: 400;
           }
         }
         .second {
@@ -78,7 +81,7 @@ export const Style = styled.div`
       &:hover {
         border-bottom: 1px solid transparent;
         box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
-        background-color: #2A2C2D;
+        background-color: #2a2c2d;
         border-radius: 10px;
 
         .image {

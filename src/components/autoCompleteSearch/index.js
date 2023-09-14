@@ -1,19 +1,19 @@
-import { Fragment, useCallback, useState } from "react";
-import { AutoComplete, Input, Spin } from "antd";
-import { useTranslation } from "next-i18next";
 import { SearchOutlined } from "@ant-design/icons";
-import Style from "./style";
-import Link from "next/link";
 import AvatarWithVerified from "@src/components/avatarWithVerify";
-import { useRouter } from "next/router";
+import { getRequest } from "@src/helpers/api";
 import {
   ROUTE_SEARCH,
   ROUTE_SINGLE_ASSET,
   ROUTE_SINGLE_COLLECTION,
 } from "@src/routes";
-import { getRequest } from "@src/helpers/api";
-import { API_URL_SUGGEST_SEARCH } from "./const";
+import { AutoComplete, Input, Spin } from "antd";
 import { debounce } from "lodash";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment, useCallback, useState } from "react";
+import { API_URL_SUGGEST_SEARCH } from "./const";
+import Style from "./style";
 
 export default function AutoCompleteSearch({ isHome }) {
   const [t, i18n] = useTranslation("common");
@@ -133,11 +133,10 @@ export default function AutoCompleteSearch({ isHome }) {
           <Input
             // size="large"
             prefix={<SearchOutlined />}
-            placeholder={t("Search items and collections")}
+            placeholder={t("Search Raffles")}
           />
         </AutoComplete>
       </div>
     </Style>
   );
 }
-

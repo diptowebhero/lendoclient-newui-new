@@ -1,17 +1,16 @@
-import Link from "next/link";
-import Style from "./style";
-import { useTranslation } from "next-i18next";
-import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
+import { CheckCircleFilled } from "@ant-design/icons";
 import IncreaseDecreaseStatus from "@src/components/increaseDecreaseStatus";
+import NetworkIconWithPrice from "@src/components/networkIconWithPrice";
 import textDots from "@src/helpers/textDots";
-import AvatarWithVerified from "../avatarWithVerify";
 import { ROUTE_SINGLE_COLLECTION } from "@src/routes";
-import { CheckCircleFilled } from '@ant-design/icons';
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import AvatarWithVerified from "../avatarWithVerify";
+import Style from "./style";
 
 import get from "lodash/get";
 
-function CollectionItem({ data,index }) {
-
+function CollectionItem({ data, index }) {
   const [t, i18n] = useTranslation("common");
   const id = get(data, "id", "");
   const name = get(data, "name", "");
@@ -37,17 +36,21 @@ function CollectionItem({ data,index }) {
       href={ROUTE_SINGLE_COLLECTION.replace(":slug", slug)}
     >
       <a className="collection-item">
-        {index+1}
+        {index + 1}
         <AvatarWithVerified image={logoImage} title={name} verified={verify} />
         <div className="information">
           <div className="first">
-            <div className="upper" >
-              <div className="nftname"> &nbsp; &nbsp;
+            <div className="upper">
+              <div className="nftname">
+                {" "}
+                &nbsp; &nbsp;
                 {textDots(name, 20)}
-                <span className="checkicon">&nbsp;
+                <span className="checkicon">
+                  &nbsp;
                   <CheckCircleFilled />
                 </span>
-              </div>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+              </div>
+              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
               <div className="percent">
                 <IncreaseDecreaseStatus
                   isIncrease={last7dIsPositive}
@@ -55,20 +58,27 @@ function CollectionItem({ data,index }) {
                 />
               </div>
             </div>
-            <div className="lower" >
+            <div className="lower">
               &nbsp;&nbsp;&nbsp;&nbsp;Floor :
-              <div className="" style={{ marginTop: '-7%' }}>&nbsp; &nbsp;
+              <div className="" style={{ marginTop: "-7%" }}>
+                &nbsp; &nbsp;
                 <NetworkIconWithPrice
-                  blockchain={ asset}
+                  blockchain={asset}
                   price={totalVolume}
                   isToFixed={true}
                 />
-              </div>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+              </div>
+              &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
               <div className="dailyvol">
                 Daily Volume : &nbsp;
-                <span className="binancedex">&nbsp;
-                  <img src="assets/images/img/binancedexicon.png" alt="binancedexicon" />
-                </span>&nbsp;
+                <span className="binancedex">
+                  &nbsp;
+                  <img
+                    src="assets/images/img/binancedexicon.png"
+                    alt="binancedexicon"
+                  />
+                </span>
+                &nbsp;
                 <span className="number">&nbsp;4.5K</span>
               </div>
             </div>
@@ -82,8 +92,14 @@ function CollectionItem({ data,index }) {
 export default function TopCollections(props) {
   const { data } = props;
   function renderFarm() {
-    return data.map((item,index) => {
-      return <CollectionItem index={index} data={item} key={item.id}></CollectionItem>;
+    return data.map((item, index) => {
+      return (
+        <CollectionItem
+          index={index}
+          data={item}
+          key={item.id}
+        ></CollectionItem>
+      );
     });
   }
   return (

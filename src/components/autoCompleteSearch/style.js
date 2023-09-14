@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import mediaQuery from "@src/styles/MediaQuery";
 
 export const Style = styled.div`
   .search {
+    width:341px;
+    height:41px;
     input,
     .ant-select {
       width: 100%;
@@ -12,12 +13,16 @@ export const Style = styled.div`
       }
       .ant-input-affix-wrapper,
       input {
-        // background: ${props =>props.isHome ? props.theme.colors.secondaryBackground : "#fff"};
+        // background: ${props =>
+          props.isHome ? props.theme.colors.secondaryBackground : "#fff"};
         // color: ${props => props.theme.colors.gray};
         background: #1A1C1E;
         color: #888888;
-        border - radius: 12px;
+        border - radius: 10px;
         border: none;
+        font-size:12px;
+        font-weight: 400;
+        
       }
       .ant-input::placeholder {
         color: #999;

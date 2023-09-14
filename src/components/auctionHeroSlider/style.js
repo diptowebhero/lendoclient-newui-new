@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import mediaQuery from "@src/styles/MediaQuery";
+import styled from "styled-components";
 
 export const Style = styled.div`
   .swiper {
@@ -10,13 +10,14 @@ export const Style = styled.div`
       `}
   }
   .main-swiper-box{
-    width: 87%;
+    max-width:91%;
+    width:100%;
     height:30rem;
     margin-top: -500px;
     // margin-top: -44%
-    // ${mediaQuery.xs`
-    //     // margin-top: -44%
-    // `}
+     /* ${mediaQuery.xs`
+         margin-top: -44%
+    `} */
   }
 
   .swiper-slide {
@@ -47,6 +48,7 @@ export const Style = styled.div`
 
 /* Style for the "prev" button */
 .prev {
+  z-index:2;
   cursor: pointer;
   padding: 10px;
   background-color: #404242; /* Button background color */
@@ -72,6 +74,7 @@ export const Style = styled.div`
 
 /* Style for the "next" button */
 .next {
+  z-index:2;
   cursor: pointer;
   margin-right: -90%;
   padding: 10px;
@@ -177,7 +180,7 @@ export const Style = styled.div`
     transition: box-shadow 0.3s ease-in 0s;
     .top {
       img {
-        width: 474px;
+        width: 374px;
         height: 474px;
         object-fit: cover;
       }
@@ -247,10 +250,13 @@ export const Style = styled.div`
   font-size: 14px;
   line-height: 17px;
   color: #FFFFFF;
-  padding: 12px 20px;
+  max-width:150px;
+  width:100%;
+  height:40px;
   border: none;
   border-radius: 50px;
   margin-top: 40px;
+  cursor:pointer;
 }
 
 .launchpadnav a {

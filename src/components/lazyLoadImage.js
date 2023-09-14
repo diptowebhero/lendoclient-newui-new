@@ -3,11 +3,13 @@ import styled from "styled-components";
 const Style = styled.div`
   .lazy-load-image-background.blur {
     filter: blur(15px);
+    width: 100%;
   }
 
   .lazy-load-image-background.blur.lazy-load-image-loaded {
     filter: blur(0);
     transition: filter 0.3s;
+    width: 100%;
   }
 
   .lazy-load-image-background.blur > img {
@@ -18,9 +20,7 @@ const Style = styled.div`
     opacity: 1;
     transition: opacity 0.3s;
   }
-  
 `;
-
 
 export default function LazyLoadImage(props) {
   return (
@@ -29,4 +29,3 @@ export default function LazyLoadImage(props) {
     </Style>
   );
 }
-

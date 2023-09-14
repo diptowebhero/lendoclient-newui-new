@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { CloseOutlined, FastForwardFilled } from "@ant-design/icons";
 import MainMenu from "@src/components/mainMenu";
-import { Row, Col } from "antd";
+import { Col, Row } from "antd";
 import Link from "next/link";
-import { Fragment } from "react";
-import Style from "./style";
+import { Fragment, useState } from "react";
 import AutoCompleteSearch from "../autoCompleteSearch";
-import Icon, { CloseOutlined } from "@ant-design/icons";
-import { FastForwardFilled } from '@ant-design/icons';
+import Style from "./style";
 
-export default function Header({ homeSetVisibleDrawer, isHome = false, overflow = "hidden" }) {
+export default function Header({
+  homeSetVisibleDrawer,
+  isHome = false,
+  overflow = "hidden",
+}) {
   const [isVisibleMobileSearch, setVisibleMobileSearch] = useState(false);
 
   function MobileSearchToggle() {
@@ -20,10 +22,7 @@ export default function Header({ homeSetVisibleDrawer, isHome = false, overflow 
   }
   return (
     <Style overflow={overflow}>
-      {!isHome && (
-        <Fragment>
-        </Fragment>
-      )}
+      {!isHome && <Fragment></Fragment>}
 
       {/* <div className="container"> */}
       <div
@@ -45,14 +44,15 @@ export default function Header({ homeSetVisibleDrawer, isHome = false, overflow 
         align="middle"
         gutter={24}
       >
-        <div style={{ width: '1.5%' }} />
+        <div style={{ width: "1.5%" }} />
         <Col xs={17} sm={17} md={12} lg={5} xl={5}>
-          <div style={{ display: 'flex' }} className="logo-bar-right-true">
-            {homeSetVisibleDrawer &&
+          <div style={{ display: "flex" }} className="logo-bar-right-true">
+            {homeSetVisibleDrawer && (
               <FastForwardFilled
                 onClick={() => MobileSidebarToggle()}
-                className="arrow-bar-right-true" />
-            }
+                className="arrow-bar-right-true"
+              />
+            )}
             <Link href="/" prefetch={false}>
               <a className="logo">
                 <img src="/assets/images/img/logo.png" />
@@ -72,18 +72,6 @@ export default function Header({ homeSetVisibleDrawer, isHome = false, overflow 
       </Row>
 
       {/* </div> */}
-
     </Style>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

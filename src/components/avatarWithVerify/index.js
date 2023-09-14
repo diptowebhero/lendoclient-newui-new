@@ -8,17 +8,17 @@ export default function AvatarWithVerified(props) {
     <Style avatarSize={avatarSize}>
       <div className="image">
         <LazyLoadImage
-          width={avatarSize === "medium" ? 50 : 26}
-          height={avatarSize === "medium" ? 50 : 26}
+          width={avatarSize === "medium" ? 39 : 26}
+          height={avatarSize === "medium" ? 39 : 26}
           className="avatar"
-          src={image}
+          src="/assets/images/img/nftimg.png"
           alt={title}
         />
         <span className="verified-status">
           {verified ? (
             <img src="/assets/icons/verified-icon.svg" />
           ) : (
-            <Fragment >
+            <Fragment>
               {/* <img src="/assets/images/img/userimg.png" /> */}
             </Fragment>
           )}

@@ -1,28 +1,18 @@
-import Link from "next/link";
-import UserIdWithAvatar from "../userIdWithAvatar";
-import { useTranslation } from "next-i18next";
-import Style from "./style";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, EffectCards, Autoplay } from "swiper";
-import textDots from "@src/helpers/textDots";
+import Icon, { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import LazyLoadImage from "@src/components/lazyLoadImage";
 import { ROUTE_SINGLE_ASSET } from "@src/routes";
+import { Col, Row } from "antd";
 import { get } from "lodash";
-import { networkPrice } from "@src/helpers/getters/price";
-import { Button, Row, Col } from "antd";
-import 'swiper/swiper-bundle.min.css';
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useRef } from "react";
-import Icon, {
-  RightOutlined,
-  LeftOutlined,
-  ConsoleSqlOutlined,
-} from "@ant-design/icons";
+import { Autoplay, FreeMode } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import Style from "./style";
 
 // Import navigation styles and add custom styles for navigation labels
 // import 'swiper/components/navigation/navigation.min.css';
-
-
-
 
 function CardItem({ data }) {
   const [t, i18n] = useTranslation("common");
@@ -49,16 +39,18 @@ function CardItem({ data }) {
 
   return (
     <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
-      <a className="auction-slider-card" >
+      <a className="auction-slider-card">
         <div className="top">
-          <LazyLoadImage src={fileUrl} title={name} width={374} />
+          <LazyLoadImage
+            src="https://d2mzn4jmmon2v7.cloudfront.net/static/nfts/artworks/7ab584d51892417ebbe856f2fb0e1452.jpeg"
+            title={name}
+            style={{ width: "100%" }}
+          />
         </div>
       </a>
     </Link>
   );
-
 }
-
 
 export default function AuctionHeroSlider(props) {
   const { data = [] } = props;
@@ -85,32 +77,45 @@ export default function AuctionHeroSlider(props) {
     },
   };
 
-
   function renderFarm() {
     return data.map((item, index) => {
       return (
-        <SwiperSlide key={index + 1} >
-          <Row  gutter={[16, 16]}>
-          {/* style={{ height: '34em' }} */}
-            <Col style={{ background: "#1D2022", padding: "5%" }} xs={24} sm={24} md={24} lg={12} xl={12} >
+        <SwiperSlide key={index + 1}>
+          <Row gutter={[16, 16]}>
+            {/* style={{ height: '34em' }} */}
+            <Col
+              style={{ background: "#1D2022", padding: "5%" }}
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              xl={12}
+            >
               <br /> <br /> <br /> <br />
               <div class="cartexthead"> Lendo Dragonz </div>
               <div class="cartext">
-                <p>Lendo Dragonz were born in the fire of the
-                  Binance Smart Chain.  </p>
+                <p>
+                  Lendo Dragonz were born in the fire of the Binance Smart
+                  Chain.{" "}
+                </p>
                 <p>
                   They rise from the ashes to build the Smart Marketplace that
                   changes everything for BNB Chain NFTs: LendoChain.
                 </p>
-                <p>  Welcome to the Revolution. </p>
+                <p> Welcome to the Revolution. </p>
               </div>
               <a href="">
-                <button class="launchpadnav">
-                  Go To Launchpad
-                </button>
+                <button class="launchpadnav">Go To Launchpad</button>
               </a>
             </Col>
-            <Col style={{ background: "#1D2022" }} xs={24} sm={24} md={24} lg={12} xl={12}>
+            <Col
+              style={{ background: "#1D2022", padding: "0", width: "50%" }}
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              xl={12}
+            >
               <CardItem data={item}></CardItem>
             </Col>
           </Row>
@@ -118,9 +123,6 @@ export default function AuctionHeroSlider(props) {
       );
     });
   }
-
-
-
 
   return (
     <Style>
@@ -139,7 +141,8 @@ export default function AuctionHeroSlider(props) {
               onClick={() => SliderRef.current.swiper.slideNext()}
             >
               <Icon component={RightOutlined} />
-            </div>&nbsp;&nbsp;&nbsp;
+            </div>
+            &nbsp;&nbsp;&nbsp;
           </div>
 
           <Swiper
@@ -154,14 +157,6 @@ export default function AuctionHeroSlider(props) {
         </div>
       </div>
       <br />
-
     </Style>
   );
 }
-
-
-
-
-
-
-

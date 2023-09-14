@@ -2,127 +2,123 @@ import mediaQuery from "@src/styles/MediaQuery";
 import styled from "styled-components";
 
 export const Style = styled.div`
+  position: relative;
+  .main-banner-img {
+    background: url(assets/images/img/home_bg.png);
+    background-position: top;
+    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: top;
+  }
+  .topcollection span {
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+  }
 
-position: relative;
-.main-banner-img{
-  background: url(assets/images/img/home_bg.png);  
-  background-position: top;
-  background-size: cover;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-y: top;
-}
-.topcollection span {
-  font-size: 25px;
-  font-weight: 700;
-  color: white;
-}
+  .topcollection .dropdown span i {
+    color: #e46400;
+  }
 
-.topcollection .dropdown span i {
-  color: #E46400;
-}
+  .topcollection .dropdown-toggle::after {
+    display: none;
+  }
 
-.topcollection .dropdown-toggle::after {
-  display: none;
-}
+  .topcollection .dropdown > a,
+  .topcollection .dropdown > a:active {
+    font-size: 25px;
+    font-weight: 700;
+    color: #e46400;
+    border: none;
+  }
+  .custom-menu-item {
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+  }
+  .custom-btn {
+    border: none;
+    margin-top: -3%;
+    margin-left: -9%;
+  }
+  .custom-btn:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+  .custom-btn-icon {
+    color: #d66b29;
+    font-size: 20px;
+  }
 
-.topcollection .dropdown>a,
-.topcollection .dropdown>a:active {
-  font-size: 25px;
-  font-weight: 700;
-  color: #E46400;
-  border: none;
-}
-.custom-menu-item{
-  font-weight: 700;
-  font-size: 14px;
-  color: white;
-}
-.custom-btn{
-  border: none;
-  margin-top: -3%;
-  margin-left: -9%;
-}
-.custom-btn:hover{
-  background-color: transparent; 
-  color: inherit; 
-}
-.custom-btn-icon{
-  color:#D66B29;
-  font-size:20px;
-}
+  .allcollections {
+    color: #acacac;
+    cursor: pointer;
+  }
 
-.allcollections {
+  .allcollections i {
+    font-size: 12px;
+    color: #acacac;
+  }
 
-  color: #ACACAC;
-  cursor: pointer;
-}
+  .upper {
+    font-size: 13px;
+  }
 
-.allcollections i {
-  font-size: 12px;
-  color: #ACACAC;
+  .lower {
+    font-size: 11px;
+  }
 
-}
+  .lable_no {
+    font-size: 10px;
+  }
 
-.upper {
-  font-size: 13px;
+  .nftimg {
+    border-radius: 50%;
+  }
 
-}
+  .nftimg img {
+    border-radius: 50%;
+    width: 39px;
+    height: 39px;
+    border: 2px solid #acacac;
+  }
 
-.lower {
-  font-size: 11px;
-}
+  .upper .percent {
+    color: #56bb3e;
+    font-weight: 700;
+  }
 
-.lable_no {
-  font-size: 10px;
-}
+  .nftname {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14.4px;
+  }
 
-.nftimg {
+  span.checkicon {
+    font-size: 10px;
+    color: #e46400;
+  }
 
-  border-radius: 50%;
-}
+  .collectionlable.active {
+    background: #2a2c2d;
+    padding: 8px 0;
+    border-radius: 10px;
+  }
+  .collectionlable {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
 
-.nftimg img {
-  border-radius: 50%;
-  width: 39px;
-  height: 39px;
-  border: 2px solid #ACACAC;
-}
+  .dash {
+    color: #9e9e9e !important;
+  }
 
-.upper .percent {
-  color: #56BB3E;
-  font-weight: 700;
-}
-
-.nftname {
-  font-weight: 700;
-}
-
-span.checkicon {
-  font-size: 10px;
-  color: #E46400;
-}
-
-.collectionlable.active {
-  background: #2A2C2D;
-  padding: 8px 0;
-  border-radius: 10px;
-}
-.collectionlable{
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center; 
-  color: white;
-}
-
-.dash {
-  color: #9E9E9E !important;
-}
-
-.red {
-  color: #FF2323 !important;
-}
-
+  .red {
+    color: #ff2323 !important;
+  }
 
   .polygon-shape {
     position: absolute;
@@ -240,7 +236,7 @@ span.checkicon {
   }
 
   .main-sidebar-section {
-    display:block;
+    display: block;
     ${mediaQuery.lg`
       display:none;
    `}
