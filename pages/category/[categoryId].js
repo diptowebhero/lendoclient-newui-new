@@ -43,8 +43,9 @@ export default function CollectionId(props) {
       />
       <Mainlayout>
         <div className="container pt40 pb40">
-          <h1 className="page-title pb20">{`${t("explore")} ${name}`}</h1>
-          <p className="page-description">{description}</p>
+          <h1 className="page-title" style={{color:"white",fontSize:"35px",fontWeight: "700",paddingBottom:"10px"}}>{`${t("explore")} ${name}`}</h1>
+          <p className="page-description" style={{color:"white",fontSize:"20px",fontWeight:"400",paddingBottom:"0"}}>{description.substring(0, 71)}</p>
+          <p className="page-description" style={{color:"#ACACAC",fontSize:"14px",fontWeight:"400"}}>Art rights let you create your Digital NFT Art!</p>
           <div className="collections pb20">
             <CollectionList data={collections} />
           </div>
