@@ -26,7 +26,7 @@ export default function CollectionFullSlider(props) {
   }
 
   const params = {
-    slidesPerView: "auto",
+    // slidesPerView: "auto",
     spaceBetween: 25,
     autoplay: {
       delay: 5000,
@@ -44,6 +44,24 @@ export default function CollectionFullSlider(props) {
       el: ".swiper-pagination",
       clickable: true,
     },
+    breakpoints:{
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      '@0.75': {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      '@1.00': {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      '@1.50': {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    }
     // breakpoints: {
     //   1200: {
     //     slidesPerView: 4,

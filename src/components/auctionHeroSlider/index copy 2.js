@@ -115,7 +115,7 @@ export default function AuctionHeroSlider(props) {
               <Row style={{padding:'4%',marginTop:'4%'}} gutter={[16, 16]}>
               <Col xs={24} sm={24} md={24} lg={2} xl={2} ></Col>
                 <Col xs={24} sm={24} md={24} lg={10} xl={10} >
-                  <div class="cartexthead"> Lendo Dragonz </div>
+                  <div class="cartexthead"> Lendo Dragonz1 </div>
                   <div class="cartext">
                     <p>Lendo Dragonz were born in the fire of the 
                       Binance Smart Chain.  </p>
