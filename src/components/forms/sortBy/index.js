@@ -9,11 +9,11 @@ export default function SortBy({ width }) {
   const [t, i18n] = useTranslation("common");
   return (
     <Style>
-      <Item className="sorting" name="sortBy">
+      <Item className="sorting" name="sortBy" >
         <Select
-          placeholder={t(` Sort by`)}
+          placeholder={ `Sort by`}
           size="large"
-          style={width && { width: width }}
+          style={width && { width: width}}
           className="sorting-input" 
         >
           <Option value="">{t("All")}</Option>
