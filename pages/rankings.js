@@ -94,6 +94,7 @@ export default function Rankings({ data }) {
           </a>
         </Link>
       ),
+      responsive: ["lg","sm","xs"],
     },
     {
       title: t("volume"),
@@ -110,6 +111,7 @@ export default function Rankings({ data }) {
           />
         );
       },
+      responsive: ["lg","sm","xs"],
     },
     {
       title: t("24h%"),
@@ -126,7 +128,7 @@ export default function Rankings({ data }) {
           />
         );
       },
-      responsive: ["lg"],
+      responsive: ["xl","lg","md","sm","xs"],
     },
     {
       title: t("7d%"),
@@ -140,7 +142,7 @@ export default function Rankings({ data }) {
           <IncreaseDecreaseStatus isIncrease={isPositive7} average={amount7} />
         );
       },
-      responsive: ["lg"],
+      responsive: ["xl","lg","md","sm","xs"],
     },
     {
       title: t("floor price"),
@@ -153,19 +155,19 @@ export default function Rankings({ data }) {
           price={floorprice}
         />
       ),
-      responsive: ["lg"],
+      responsive: ["xl","lg","md","sm","xs"],
     },
     {
       title: t("owners"),
       key: "countOwners",
       dataIndex: "countOwners",
-      responsive: ["lg"],
+      responsive: ["xl","lg","md","sm","xs"],
     },
     {
       title: t("items"),
       key: "countItems",
       dataIndex: "countItems",
-      responsive: ["lg"],
+      responsive: ["xl","lg","md","sm","xs"],
     },
   ];
 
@@ -239,72 +241,77 @@ export default function Rankings({ data }) {
               </Form>
 
               <div className="sorting">
-                <Row wrap={true} justify="space-between" align="center">
-                  <Col>
-                    <div className="filter-section ">
-                      <Form
-                        form={form}
-                        name="filter"
-                        className="form"
-                        onValuesChange={onFilter}
-                        initialValues={{
-                          time: "ALL_TIME",
-                          blockChain: "BSC",
-                          category: "all",
-                          ...query,
-                        }}
+                <Row wrap={true} justify="space-between" align="center" style={{width:"100%"}}>
+                  <Col span={24}>
+                    {/* <div className="filter-section "> */}
+                    <Form
+                      form={form}
+                      name="filter"
+                      className="form"
+                      onValuesChange={onFilter}
+                      initialValues={{
+                        time: "ALL_TIME",
+                        blockChain: "BSC",
+                        category: "all",
+                        ...query,
+                      }}
+                    >
+                      <div
+                        className="ranking-flex-space"
                       >
-                        <Row wrap={true} gutter={[5, 5]}>
-                          <Col>
-                            <Form.Item name="time" className="no-space">
-                              <div class="bytime">
-                                {timeData.map((vl, index) => (
-                                  <div
-                                    key={index + 1}
-                                    onClick={() => handleItemClick(vl.value)}
-                                    className={`sorttime ${
-                                      selectedValue === vl.value ? "active" : ""
-                                    }`}
-                                  >
-                                    {t(vl.name)}
-                                  </div>
-                                ))}
+                        <Form.Item name="time" className="no-space">
+                          <div class="bytime">
+                            {timeData.map((vl, index) => (
+                              <div
+                                key={index + 1}
+                                onClick={() => handleItemClick(vl.value)}
+                                className={`sorttime ${
+                                  selectedValue === vl.value ? "active" : ""
+                                }`}
+                              >
+                                {t(vl.name)}
                               </div>
-                            </Form.Item>
-                          </Col>
-                          <Col>
-                            <div style={{ width: "470px" }}></div>
-                          </Col>
-                          <Col>
-                            <Form.Item name="categoryName" className="no-space">
-                              <Select
-                                style={{ width: "150px" }}
-                                size="large"
-                                placeholder={t("all categories")}
-                                className="sortdropdowns"
-                              >
-                                <Option key={"all"} value={""}>
-                                  all
-                                </Option>
-                                {renderCategories()}
-                              </Select>
-                            </Form.Item>
-                          </Col>
-                          &nbsp;&nbsp;
-                          <Col>
-                            <Form.Item name="blockChain" className="no-space">
-                              <Select
-                                size="large"
-                                className="sortdropdowns"
-                                disabled
-                              >
-                                <Option value="bsc">{t("BSC")}</Option>
-                              </Select>
-                            </Form.Item>
-                          </Col>
-                        </Row>
-                      </Form>
-                    </div>
+                            ))}
+                          </div>
+                        </Form.Item>
+                        <div style={{display:"flex"}}>
+                          {" "}
+                          <Form.Item name="categoryName" className="no-space">
+                            <Select
+                              style={{
+                                width: "167px",
+                                height: "50px",
+                                textAlign: "center",
+                                marginRight:"10px"
+                              }}
+                              size="large"
+                              placeholder={t("all categories")}
+                              className="sortdropdowns"
+                            >
+                              <Option key={"all"} value={""}>
+                                all
+                              </Option>
+                              {renderCategories()}
+                            </Select>
+                          </Form.Item>
+                          <Form.Item name="blockChain" className="no-space">
+                            <Select
+                              style={{
+                                width: "167px",
+                                height: "50px",
+                                textAlign: "center",
+                              }}
+                              size="large"
+                              className="sortdropdowns"
+                              disabled
+                            >
+                              <Option value="bsc">{t("BSC")}</Option>
+                            </Select>
+                          </Form.Item>
+                        </div>
+                      </div>
+                    </Form>
+                    {/* </div> */}
                   </Col>
                 </Row>
                 <br /> <br />
