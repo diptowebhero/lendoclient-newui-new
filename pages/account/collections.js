@@ -260,7 +260,7 @@ export default function AccountOther(props) {
                           size="large"
                           icon={<TbAlignLeft />}
                           onClick={() => filterDrawerToggle()}
-                        />
+                        >filter</Button>
                       </Col>
 
                       <Col

@@ -1,6 +1,7 @@
 import { Form, Select } from "antd";
 import { useTranslation } from "next-i18next";
 import Style from "./style";
+import { TbSearch } from "react-icons/tb";
 const { Option } = Select;
 const { Item } = Form;
 
@@ -10,10 +11,10 @@ export default function SortBy({ width }) {
     <Style>
       <Item className="sorting" name="sortBy">
         <Select
-          placeholder={t("Sort by")}
+          placeholder={t(` Sort by`)}
           size="large"
           style={width && { width: width }}
-          className="sorting-input"
+          className="sorting-input" 
         >
           <Option value="">{t("All")}</Option>
           <Option value="RECENTLY_LISTED">{t("Recently Listed")}</Option>

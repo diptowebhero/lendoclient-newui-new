@@ -6,6 +6,7 @@ export const Style = styled.div`
     ul {
       display: flex;
       gap: 10px;
+      justify-content: space-around;
       flex-wrap: wrap;
       li {
         a {
