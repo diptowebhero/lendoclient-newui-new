@@ -5,7 +5,7 @@ export const Style = styled.div`
   .category-slider {
     .desktop-version {
       display: block;
-      width: 76%;
+      width: 100%;
       ul {
         display: flex;
         justify-content: center;
@@ -35,7 +35,7 @@ export const Style = styled.div`
       &.active {
         div {
           color:white;
-          background: #2A2C2D;
+          background:#E46400;;
           border-radius: 180px;
           border-color: ${props => props.theme.colors.primary};
         }

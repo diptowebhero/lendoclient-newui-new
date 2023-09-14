@@ -23,15 +23,17 @@ export const Style = styled.div`
           transform: translateX(-50%);
           img {
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            // width: 45px;
+            // height: 45px;
             object-fit: cover;
+            background:#2A2C2D;
+            margin-top: 32px;
           }
         }
       }
       .bottom {
         text-align: center;
-        padding: 40px 20px 20px 20px;
+        padding: 73px 18px 20px 18px;
         min-height: 210px;
         .by {
           color: ${props => props.theme.colors.gray};
@@ -39,7 +41,7 @@ export const Style = styled.div`
         .desc {
           color: ${props => props.theme.colors.gray};
           overflow: hidden;
-          font-size: 0.9rem;
+          font-size: 11px;
         }
       }
     }
@@ -53,6 +55,7 @@ export const Style = styled.div`
   .title{
     color:white;
     font-weight: 500;
+    font-size:20px;
   }
 `;
 
