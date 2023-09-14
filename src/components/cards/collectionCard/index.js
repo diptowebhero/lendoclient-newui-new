@@ -58,15 +58,15 @@ export default function CollectionCard({ data }) {
               />
               <div className="avatar">
                 <LazyLoadImage
-                  width={45}
-                  height={45}
+                  width={75}
+                  height={75}
                   src={logoImg || logoImage}
                   alt={name}
                 />
               </div>
             </div>
             <div className="bottom">
-              <h3 className="title">{textDots(name, 40)}</h3>
+              <h3 className="title">{textDots(name, 21)}</h3>
               <p>
                 <span className="by">{`${t("by")}`}</span>{" "}
                 <Link
@@ -79,7 +79,8 @@ export default function CollectionCard({ data }) {
                   </a>
                 </Link>
               </p>
-              <p className="desc">{textDots(description, 80)}</p>
+              {/* <p className="desc">{textDots(description, 80)}</p> */}
+              <p className="desc">A community celevrating representation, inclusivity, and equal opportunities for all woman across the world.</p>
             </div>
           </div>
         </a>
