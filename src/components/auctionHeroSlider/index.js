@@ -42,6 +42,7 @@ function CardItem({ data }) {
       <a className="auction-slider-card">
         <div className="top">
           <LazyLoadImage
+          className="swipper_banner_img"
             src="https://d2mzn4jmmon2v7.cloudfront.net/static/nfts/artworks/7ab584d51892417ebbe856f2fb0e1452.jpeg"
             title={name}
             style={{ width: "100%" }}
@@ -84,15 +85,17 @@ export default function AuctionHeroSlider(props) {
           <Row gutter={[16, 16]}>
             {/* style={{ height: '34em' }} */}
             <Col
+            className="s_height_one"
               style={{ background: "#1D2022", padding: "5%" }}
               xs={24}
-              sm={24}
-              md={24}
+              sm={13}
+              md={12}
               lg={12}
               xl={12}
             >
-              <br /> <br /> <br /> <br />
-              <div class="cartexthead"> Lendo Dragonz </div>
+              {/* <br /> <br /> <br /> <br /> */}
+              <div className="swipper_text_parent">
+              <div class="cartexthead">Lendo Dragon</div>
               <div class="cartext">
                 <p>
                   Lendo Dragonz were born in the fire of the Binance Smart
@@ -107,12 +110,14 @@ export default function AuctionHeroSlider(props) {
               <a href="">
                 <button class="launchpadnav">Go To Launchpad</button>
               </a>
+              </div>
             </Col>
             <Col
+             className="s_height_two"
               style={{ background: "#1D2022", padding: "0", width: "50%" }}
               xs={24}
-              sm={24}
-              md={24}
+              sm={11}
+              md={12}
               lg={12}
               xl={12}
             >
@@ -126,7 +131,7 @@ export default function AuctionHeroSlider(props) {
 
   return (
     <Style>
-      <div className="card-slider ">
+      <div className="card-slider" >
         {/* <br /> <br /> <br /> */}
         <div className="swiper-container">
           <div className="second">
