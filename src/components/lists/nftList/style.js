@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Style = styled.div`
+  .sliderCard {
+    width: 100%;
+  }
   .nft-list {
     .bidderimgs img {
       width: 30px;

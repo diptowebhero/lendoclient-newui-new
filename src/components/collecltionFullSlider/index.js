@@ -2,7 +2,6 @@ import Icon, { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Select } from "antd";
 import { useTranslation } from "next-i18next";
 import { useRef } from "react";
-import { Autoplay, FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardNFT from "../lists/nftList/CardNFT";
 import Style from "./style";
@@ -19,7 +18,7 @@ export default function CollectionFullSlider(props) {
       return (
         <SwiperSlide key={item.id} className="s_my_class">
           {/* <CollectionCard data={item}></CollectionCard> */}
-          <CardNFT data={item} size="medium" ></CardNFT>
+          <CardNFT data={item} size="medium"></CardNFT>
         </SwiperSlide>
       );
     });
@@ -128,21 +127,20 @@ export default function CollectionFullSlider(props) {
           ref={SliderRef}
           // {...params}
           slidesPerView={4}
-        spaceBetween={10}
-        className="mySwiper"
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+          spaceBetween={10}
+          className="mySwiper"
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           loop="true"
           breakpoints={{
             375: {
               slidesPerView: 1,
-              spaceBetween: 15,
-              
+              // spaceBetween: 15,
             },
             450: {
               slidesPerView: 1,
@@ -165,7 +163,6 @@ export default function CollectionFullSlider(props) {
               spaceBetween: 20,
             },
           }}
-       
         >
           {renderFarm()}
         </Swiper>

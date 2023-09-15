@@ -1,7 +1,14 @@
-import styled from "styled-components";
 import mediaQuery from "@src/styles/MediaQuery";
+import styled from "styled-components";
 
 export const Style = styled.div`
+  .collection-full-slider {
+    max-width: 1240px;
+    margin: auto;
+  }
+  .swiper {
+    margin: 0px 15px !important;
+  }
   .swiper-slide {
     transition: all 300ms ease;
     opacity: 0.5;

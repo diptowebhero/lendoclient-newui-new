@@ -1,19 +1,17 @@
-import Link from "next/link";
+import LazyLoadImage from "@src/components/lazyLoadImage";
 import UserIdWithAvatar from "@src/components/userIdWithAvatar";
-import Style from "./style";
-import { Row, Col, Empty } from "antd";
+import { networkPrice } from "@src/helpers/getters/price";
+import { ROUTE_SINGLE_ASSET } from "@src/routes";
+import { Col, Row } from "antd";
+import get from "lodash/get";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { Fragment } from "react";
 import Countdown from "react-countdown";
-import get from "lodash/get";
-import isEmpty from "lodash/isEmpty";
-import LazyLoadImage from "@src/components/lazyLoadImage";
-import { ROUTE_SINGLE_ASSET } from "@src/routes";
-import { networkPrice } from "@src/helpers/getters/price";
+import Style from "./style";
 
 const AUCTION = "BID";
 const FIX = "FIX";
-
 
 export default function CardNft({ data, size, userAdd }) {
   const [t, i18n] = useTranslation("common");
@@ -81,7 +79,7 @@ export default function CardNft({ data, size, userAdd }) {
   const asset = get(data, "asset", "");
   const price = get(data, "price", "");
   const collection = get(data, "collection", "");
-  const username = userAdd || get(data, "creator.username", "")
+  const username = userAdd || get(data, "creator.username", "");
   const avatar = get(data, "creator.avatar", "");
   const publicAddress = userAdd || get(data, "creator.publicAddress", "");
   const type = get(data, "price.type", "");
@@ -117,13 +115,15 @@ export default function CardNft({ data, size, userAdd }) {
   const isActive = get(data, "collection.isActive", "");
   const listingsIsActive = get(data, "listings[0].isActive", false);
 
- 
   return (
     <Style>
-      <div className="nft-list" style={{width:"270px"}}>
-        <div className="nft-item" >
+      <div className="nft-list sliderCard">
+        <div className="nft-item">
           <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
-            <a className="nft-card" style={{ background: "#1D2022", border: "0.5px solid #404242" }}>
+            <a
+              className="nft-card"
+              style={{ background: "#1D2022", border: "0.5px solid #404242" }}
+            >
               <div className="top">
                 <div className="hover-box">
                   <div className="padding-box">
@@ -132,7 +132,9 @@ export default function CardNft({ data, size, userAdd }) {
                       {collectionName}
                     </h2>
                     <div className="owner">
-                      <UserIdWithAvatar data={{ username, avatar, publicAddress }} />
+                      <UserIdWithAvatar
+                        data={{ username, avatar, publicAddress }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -146,27 +148,56 @@ export default function CardNft({ data, size, userAdd }) {
               </div>
               <div className="bottom">
                 <div className="content">
-
-                  <div style={{ marginBottom: "5%", fontSize: '12px' }} className="recentbids mb-3">
-                    <div style={{ display: "flex", alignItems: "center" }} className="recentbidders d-flex align-items-center ">
+                  <div
+                    style={{ marginBottom: "5%", fontSize: "12px" }}
+                    className="recentbids mb-3"
+                  >
+                    <div
+                      style={{ display: "flex", alignItems: "center" }}
+                      className="recentbidders d-flex align-items-center "
+                    >
                       <div className="bidderimgs">
-                        <img src="assets/images/img/nftimg.png" className="bidderimg2" alt="bidderimg" />
-                        <img src="assets/images/img/nftimg.png" className="bidderimg1" alt="bidderimg" />
-                        <img src="assets/images/img/nftimg.png" className="bidderimg3" alt="bidderimg" />
+                        <img
+                          src="assets/images/img/nftimg.png"
+                          className="bidderimg2"
+                          alt="bidderimg"
+                        />
+                        <img
+                          src="assets/images/img/nftimg.png"
+                          className="bidderimg1"
+                          alt="bidderimg"
+                        />
+                        <img
+                          src="assets/images/img/nftimg.png"
+                          className="bidderimg3"
+                          alt="bidderimg"
+                        />
                       </div>
-                      <span className="no_ofbidders ms-2" style={{ color: "#ACACAC" }}>&nbsp;
+                      <span
+                        className="no_ofbidders ms-2"
+                        style={{ color: "#ACACAC" }}
+                      >
+                        &nbsp;
                         <span> 9+</span>
-                        Placed Bids</span>
+                        Placed Bids
+                      </span>
                     </div>
-
                   </div>
 
                   <h3 className="item-title">{name}</h3>
 
                   <div className="information">
                     <Row justify="space-between">
-                      <Col>{renderType("FIX" || type, 32 || unitPrice, 2 || assetPrice)}</Col>
-                      <Col>{renderTime(360000 || expiration, "BID" || type)}</Col>
+                      <Col>
+                        {renderType(
+                          "FIX" || type,
+                          32 || unitPrice,
+                          2 || assetPrice
+                        )}
+                      </Col>
+                      <Col>
+                        {renderTime(360000 || expiration, "BID" || type)}
+                      </Col>
                     </Row>
                   </div>
                 </div>
@@ -178,5 +209,3 @@ export default function CardNft({ data, size, userAdd }) {
     </Style>
   );
 }
-
-
