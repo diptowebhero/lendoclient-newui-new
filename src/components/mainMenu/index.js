@@ -100,7 +100,6 @@ export default function MainMenu({ MobileSearchToggle }) {
   }
 
   function handleAccountsChanged(accounts) {
-    console.log(accounts);
     const currentUserPublicAddress = get(getUser(), "publicAddress");
     console.log(currentUserPublicAddress);
     if (accounts.length === 0) {
@@ -208,9 +207,20 @@ export default function MainMenu({ MobileSearchToggle }) {
       return (
         <li className={`menu-item ${classStyle}`} key={index}>
           <Link href={link} prefetch={false}>
-            <div className={`${classStyle}`} style={{ height: "40px" }}>
-              <img src={img} alt={classStyle} /> &nbsp;&nbsp;
-              <a className={`${router.pathname === link ? "active" : null} `}>
+            <div
+              className={`${classStyle}`}
+              style={{ height: "40px", display: "flex", alignItems: "center" }}
+            >
+              <img style={{ width: "20px" }} src={img} alt={classStyle} />{" "}
+              &nbsp;&nbsp;
+              <a
+                style={{
+                  letterSpacing: "0px",
+                  fontSize: "17px",
+                  color: "white",
+                }}
+                className={`${router.pathname === link ? "active" : null} `}
+              >
                 {t(title)}
               </a>
             </div>

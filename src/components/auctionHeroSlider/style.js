@@ -306,10 +306,10 @@ export const Style = styled.div`
   @media (max-width: 575px){
     .swipper_text_parent{
       padding-top:10px;
-      padding-left:25px;
+      padding-left:39px;
     }
      .s_height_one{
-         height:230px;
+         min-height:230px;
        }
        .s_height_two{
          height:230px;
