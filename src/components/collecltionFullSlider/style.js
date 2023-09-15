@@ -6,7 +6,7 @@ export const Style = styled.div`
     transition: all 300ms ease;
     opacity: 0.5;
     // background: #fff;
-    width: 300px !important;
+    // width: 300px !important;
     ${mediaQuery.md`
           opacity: 1;
       `}
@@ -32,13 +32,20 @@ export const Style = styled.div`
       font-weight: 700;
       color: white;
       .text_orange {
-        color: #E46400 !important;
+        color: #e46400 !important;
       }
       h2 {
         line-height: inherit;
         display: inline-block;
       }
     }
+
+    .collection-full-slider {
+      width: 95%;
+    }
+    // .swiper-slide.s_my_class.swiper-slide-active {
+    //   width: 350px !important;
+    // }
     .second {
       display: flex;
       gap: 10px;
@@ -50,9 +57,9 @@ export const Style = styled.div`
         height: 35px;
         // border: 1px solid ${props => props.theme.colors.gray};
         transition: all 300ms ease;
-        border-radius:10px;
-        background: #2A2C2D;
-        color:white;
+        border-radius: 10px;
+        background: #2a2c2d;
+        color: white;
         // border-radius: 50%;
         position: relative;
         .anticon {

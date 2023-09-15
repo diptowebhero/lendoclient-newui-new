@@ -120,7 +120,7 @@ export default function CardNft({ data, size, userAdd }) {
  
   return (
     <Style>
-      <div className="nft-list">
+      <div className="nft-list" style={{width:"270px"}}>
         <div className="nft-item" >
           <Link href={ROUTE_SINGLE_ASSET.replace(":slug", slug)}>
             <a className="nft-card" style={{ background: "#1D2022", border: "0.5px solid #404242" }}>

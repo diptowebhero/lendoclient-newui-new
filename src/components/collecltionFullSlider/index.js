@@ -17,51 +17,55 @@ export default function CollectionFullSlider(props) {
   function renderFarm() {
     return data.map(item => {
       return (
-        <SwiperSlide key={item.id}>
+        <SwiperSlide key={item.id} className="s_my_class">
           {/* <CollectionCard data={item}></CollectionCard> */}
-          <CardNFT data={item} size="medium"></CardNFT>
+          <CardNFT data={item} size="medium" ></CardNFT>
         </SwiperSlide>
       );
     });
   }
 
   const params = {
-    // slidesPerView: "auto",
-    spaceBetween: 25,
-    autoplay: {
-      delay: 5000,
-    },
-    freeMode: {
-      enabled: true,
-      momentum: false,
-      momentumBounce: false,
-    },
-    centeredSlides: true,
+    // slidesPerView: 3,
+    // // spaceBetween: 25,
+    // autoplay: {
+    //   delay: 5000,
+    // },
+    // freeMode: {
+    //   enabled: true,
+    //   momentum: false,
+    //   momentumBounce: false,
+    // },
+    // centeredSlides: true,
     // loop: true,
-    loop: data.length >= 6,
-    modules: [FreeMode, Autoplay],
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints:{
-      '@0.00': {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      '@0.75': {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      '@1.00': {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      '@1.50': {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-    }
+    // loop: data.length >= 6,
+    // modules: [FreeMode, Autoplay],
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+    // breakpoints:{
+    //   640: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 20,
+    //   },
+    //   768: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 40,
+    //   },
+    //   1024: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 50,
+    //   },
+    //   1200: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 50,
+    //   },
+    //   1500: {
+    //     slidesPerView: 4,
+    //     spaceBetween: 50,
+    //   },
+    // }
     // breakpoints: {
     //   1200: {
     //     slidesPerView: 4,
@@ -120,7 +124,49 @@ export default function CollectionFullSlider(props) {
           </div>
         </div>
 
-        <Swiper ref={SliderRef} {...params}>
+        <Swiper
+          ref={SliderRef}
+          // {...params}
+          slidesPerView={4}
+        spaceBetween={10}
+        className="mySwiper"
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+          loop="true"
+          breakpoints={{
+            375: {
+              slidesPerView: 1,
+              spaceBetween: 15,
+              
+            },
+            450: {
+              slidesPerView: 1,
+              spaceBetween: 15,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 5,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1100: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+          }}
+       
+        >
           {renderFarm()}
         </Swiper>
       </div>
