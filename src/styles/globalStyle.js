@@ -20,6 +20,19 @@ export const GlobalStyle = styled.createGlobalStyle`
     color: #acacac;
     font-weight: 400;
   }
+  .readMoreBtn {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #e46400 !important;
+    color: #e46400;
+    text-align: center;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem; /* 171.429% */
+    letter-spacing: 0.00938rem;
+    cursor: pointer;
+  }
   link[rel="manifest"] {
     --pwacompat-splash-font: Roboto;
   }
